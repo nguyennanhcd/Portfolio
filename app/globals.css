@@ -1,7 +1,31 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
 @custom-variant dark (&:is(.dark *));
+
+
+/* config area*/
+@theme {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 960px;
+  --breakpoint-xl: 1280px;
+
+  --font-primary: "var(--font-jetbrainsMono)";
+
+  --color-primary: "#1c1c22";
+  --color-ACCENT-DEFAULT: "#00ff99";
+  --color-ACCENT-hover: "#00e187";
+}
+
+@layer base {
+  body {
+    @apply font-primary bg-primary text-white leading-loose;
+  }
+}
+
+/*config area */
 
 @theme inline {
   --color-background: var(--background);
