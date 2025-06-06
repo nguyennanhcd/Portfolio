@@ -13,18 +13,21 @@
   --breakpoint-xl: 1280px;
 
   --font-primary: "var(--font-jetbrainsMono)";
-
   --color-primary: "#1c1c22";
-  --color-ACCENT-DEFAULT: "#00ff99";
-  --color-ACCENT-hover: "#00e187";
+  --color-accent-default: oklch(0.8791 0.2134 155.95);
+  --color-accent-hover: oklch(0.7999 0.1936 156.11);
+  --bg-primary: "#1c1c22";
 }
 
 @layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
   body {
-    @apply font-primary bg-primary text-white leading-loose;
+    background-color: var(--bg-primary);
+    @apply bg-primary font-primary text-white leading-loose;
   }
 }
-
 /*config area */
 
 @theme inline {
@@ -68,6 +71,8 @@
 }
 
 :root {
+  --font-jetbrainsMono: "JetBrains Mono", monospace;
+  --font-primary: var(--font-jetbrainsMono);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
@@ -75,7 +80,7 @@
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
+  --primary: oklch(0.2291 0.0115 285.46);
   --primary-foreground: oklch(0.984 0.003 247.858);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
@@ -136,11 +141,4 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
+
