@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import React from 'react'
 
 //components
 import Stairs from './Stairs'
