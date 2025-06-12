@@ -10,7 +10,7 @@ export default function Home() {
           <div className='text-center xl:text-left'>
             <span>Software Developer</span>
             <h1 className='h1 mb-6'>
-              Hello I&rsquo;m <br />{' '}
+              Hi,I&rsquo;m <br />{' '}
               <span className='text-accent-default'> Nguyễn Hoàng Anh</span>
             </h1>
             <p className='max-w-[500px] mb-9 text-white/80'>
