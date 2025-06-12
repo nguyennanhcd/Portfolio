@@ -1,13 +1,16 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { FiDownload } from 'react-icons/fi'
 
 // components
 import Social from '@/components/Social'
 import Photo from '@/components/Photo'
+import Stats from '@/components/Stats'
 
 export default function Home() {
   return (
-    <section className='h-full'>
+    <section className='h-full xl:-mt-10'>
       <div className='container mx-auto'>
         <div className='flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-4'>
           {/*text */}
@@ -46,6 +49,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Stats />
     </section>
   )
 }
