@@ -1,3 +1,16 @@
+import {
+  FaHtml5,
+  FaCss3,
+  FaJs,
+  FaReact,
+  FaNodeJs,
+  FaPython,
+} from 'react-icons/fa'
+
+import { SiNextdotjs, SiTailwindcss } from 'react-icons/si'
+
+import { FaGolang } from 'react-icons/fa6'
+
 export const about = {
   title: 'About Me',
   description: 'lorem ipsum',
@@ -109,6 +122,49 @@ export const education = {
       institution: 'lorem ipsum',
       degree: 'lorem ipsum',
       duration: '2023',
+    },
+  ],
+}
+
+export const skills = {
+  title: 'My skills',
+  description: 'lorem ipsum',
+  skillList: [
+    {
+      name: 'HTML',
+      icon: <FaHtml5 />,
+    },
+    {
+      name: 'CSS',
+      icon: <FaCss3 />,
+    },
+    {
+      name: 'JavaScript',
+      icon: <FaJs />,
+    },
+    {
+      name: 'React',
+      icon: <FaReact />,
+    },
+    {
+      name: 'Next.js',
+      icon: <SiNextdotjs />,
+    },
+    {
+      name: 'Tailwind CSS',
+      icon: <SiTailwindcss />,
+    },
+    {
+      name: 'Node.js',
+      icon: <FaNodeJs />,
+    },
+    {
+      name: 'Python',
+      icon: <FaPython />,
+    },
+    {
+      name: 'Go',
+      icon: <FaGolang />,
     },
   ],
 }
