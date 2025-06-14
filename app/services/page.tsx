@@ -14,7 +14,11 @@ const Services = () => {
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
-            transition: { delay: 1, duration: 0.4, ease: 'easeInOut' },
+            transition: {
+              delay: 2.4,
+              duration: 0.4,
+              ease: 'easeInOut',
+            },
           }}
           className='grid grid-cols-1 md:grid-cols-2 gap-[60px]'
         >
@@ -41,7 +45,9 @@ const Services = () => {
                   {service.title}
                 </h2>
                 {/* description*/}
-                <p className='text-white/60'>{service.description}</p>
+                <p className='text-white/60'>
+                  {service.description}
+                </p>
                 {/* border*/}
                 <div className='border-b border-white/20 w-full'>
                   {service.title}
