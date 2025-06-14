@@ -11,9 +11,20 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useState } from 'react'
 import { BsArrowUpRight, BsGithub } from 'react-icons/bs'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
 
 const Work = () => {
   const [project, setProject] = useState(projects[0])
+
+  const handleSlideChange = (swiper: {
+    activeIndex: number
+  }) => {
+    // get current slide index
+    const currentIndex: number = swiper.activeIndex
+    //update project state based on current slide index
+    setProject(projects[currentIndex])
+  }
 
   return (
     <motion.section
@@ -87,7 +98,20 @@ const Work = () => {
               </div>
             </div>
           </div>
-          <div className='w-full xl:w-[50%]'>slider</div>
+          <div className='w-full xl:w-[50%]'>
+            <Swiper
+              spaceBetween={30}
+              slidesPerView={1}
+              className='xl:h-[520px] mb-12'
+              onSlideChange={handleSlideChange}
+            >
+              {projects.map((project, index) => (
+                <SwiperSlide key={index} className='w-full'>
+                  <div className='h-[460px] relative group flex justify-center items-center bg-pink-50/20'></div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       </div>
     </motion.section>
