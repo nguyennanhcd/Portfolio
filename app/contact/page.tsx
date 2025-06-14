@@ -1,6 +1,17 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
 import { motion } from 'framer-motion'
 
 const Contact = () => {
@@ -48,6 +59,37 @@ const Contact = () => {
                 <Input type='email' placeholder='Email' />
                 <Input type='phone' placeholder='Phone' />
               </div>
+              {/* select */}
+              <Select>
+                <SelectTrigger className='w-full'>
+                  <SelectValue placeholder='Select a service' />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>
+                      Select a service
+                    </SelectLabel>
+                    <SelectItem value='est'>
+                      Web Development
+                    </SelectItem>
+                    <SelectItem value='cst'>
+                      SEO{' '}
+                    </SelectItem>
+                    <SelectItem value='mst'>
+                      MMO Tools
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              {/*text area */}
+              <Textarea
+                className='h-[200px]'
+                placeholder='Type your message here...'
+              />
+              {/*button */}
+              <Button className='max-w-40' size='md'>
+                Send message
+              </Button>
             </form>
           </div>
 
