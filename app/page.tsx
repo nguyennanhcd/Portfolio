@@ -7,6 +7,10 @@ import { FiDownload } from 'react-icons/fi'
 import Social from '@/components/Social'
 import Photo from '@/components/Photo'
 import Stats from '@/components/Stats'
+import TypeWriter from '@/components/TypeWritter'
+
+// constant
+import { mySelf } from '@/constants/mySelf'
 
 export default function Home() {
   return (
@@ -18,11 +22,12 @@ export default function Home() {
             <span>Software Developer</span>
             <h1 className='h1 mb-6'>
               Hi,I&rsquo;m <br />{' '}
-              <span className='text-accent-default'> Nguyễn Hoàng Anh</span>
+              <TypeWriter mySelf={mySelf} />
             </h1>
             <p className='max-w-[500px] mb-9 text-white/80'>
-              I excel at crafting elegant digital experiences and I am
-              proficient in various programming languages and technologies
+              I excel at crafting elegant digital
+              experiences and I am proficient in various
+              programming languages and technologies
             </p>
             {/*btn and socials */}
             <div className='flex flex-col xl:flex-row items-center gap-8'>
