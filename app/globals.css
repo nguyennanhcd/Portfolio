@@ -14,8 +14,8 @@
   --breakpoint-xxl: 1536px;
 
   --font-primary: "var(--font-jetbrainsMono)";
-  --color-accent-default: oklch(0.8791 0.2134 155.95);
-  --color-accent-hover: oklch(0.7999 0.1936 156.11);
+  --color-accent-default: oklch(0.8542 0.0517 199.29);
+  --color-accent-hover: oklch(0.9066 0.0517 199.29);
   --color-primary: oklch(0.2291 0.0115 285.46)
 }
 
@@ -37,7 +37,7 @@
   }
   
   .text-outline-hover {
-    -webkit-text-stroke: 1px #00ff99;
+    -webkit-text-stroke: 1px oklch(0.8542 0.0517 199.29);
   }
   
   .text-outline {
@@ -45,7 +45,7 @@
   }
 
   .group:hover .text-outline-hover {
-    -webkit-text-stroke: 1px #00ff99;
+    -webkit-text-stroke: 1px oklch(0.8542 0.0517 199.29);
   }
   
 }

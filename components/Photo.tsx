@@ -10,7 +10,11 @@ const Photo = () => {
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { delay: 2, duration: 0.4, ease: 'easeInOut' },
+          transition: {
+            delay: 2,
+            duration: 0.4,
+            ease: 'easeInOut',
+          },
         }}
       >
         {/*Image */}
@@ -19,7 +23,11 @@ const Photo = () => {
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
-            transition: { delay: 2.4, duration: 0.4, ease: 'easeInOut' },
+            transition: {
+              delay: 2.4,
+              duration: 0.4,
+              ease: 'easeInOut',
+            },
           }}
         >
           <Image
@@ -43,13 +51,17 @@ const Photo = () => {
             cx='253'
             cy='253'
             r='250'
-            stroke='#00ff99'
+            stroke='#A8DADC'
             strokeWidth='4'
             strokeLinecap='round'
             strokeLinejoin='round'
             initial={{ strokeDasharray: '24 10 0 0' }}
             animate={{
-              strokeDasharray: ['15 120 25 25', '16 25 92 72', '4 250 22 22'],
+              strokeDasharray: [
+                '15 120 25 25',
+                '16 25 92 72',
+                '4 250 22 22',
+              ],
               rotate: [120, 360],
             }}
             transition={{
