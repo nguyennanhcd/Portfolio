@@ -1,4 +1,4 @@
-import { fetchGitHubCommits } from '@/utils/fetchGithubCommits'
+import { fetchGitHubCommits } from '@/app/api/fetchGithubCommits'
 
 const numOfCommits: number = await fetchGitHubCommits(
   'nguyennanhcd',

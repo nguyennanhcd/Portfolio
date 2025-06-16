@@ -1,10 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+interface Repo {
+  name: string
+  fork: boolean
+}
+
+interface Commit {
+  sha: string
+}
+
 export const fetchGitHubCommits = async (
   username: string,
   token: string,
 ): Promise<number> => {
   try {
-    let repos: any[] = []
+    let repos: Repo[] = []
     let page = 1
 
     // Fetch all repositories
@@ -17,14 +25,16 @@ export const fetchGitHubCommits = async (
             'User-Agent': 'Node.js',
             Accept: 'application/vnd.github.v3+json',
           },
+          cache: 'no-store', // Ensure fresh data for now
         },
       )
 
-      if (!repoResponse.ok)
+      if (!repoResponse.ok) {
         throw new Error(
           `Failed to fetch repos: ${repoResponse.status}`,
         )
-      const repoData = await repoResponse.json()
+      }
+      const repoData: Repo[] = await repoResponse.json()
       if (repoData.length === 0) break
       repos = [...repos, ...repoData]
       page++
@@ -47,6 +57,7 @@ export const fetchGitHubCommits = async (
               'User-Agent': 'Node.js',
               Accept: 'application/vnd.github.v3+json',
             },
+            cache: 'no-store',
           },
         )
 
@@ -57,7 +68,8 @@ export const fetchGitHubCommits = async (
           break
         }
 
-        const commits = await commitResponse.json()
+        const commits: Commit[] =
+          await commitResponse.json()
         repoCommits += commits.length
         if (commits.length < 100) break
         commitPage++
@@ -68,6 +80,8 @@ export const fetchGitHubCommits = async (
     return totalCommits
   } catch (err) {
     console.error('Error fetching commits:', err)
-    return 0
+    throw new Error(
+      `Failed to fetch commits: ${(err as Error).message}`,
+    )
   }
 }
