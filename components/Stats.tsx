@@ -1,12 +1,23 @@
-import { stats } from '@/constants/stats'
+// components/Stats.jsx
+'use client' // Required because react-countup uses client-side features
+
 import CountUp from 'react-countup'
 
-const Stats = () => {
+type Stat = {
+  num: number
+  text: string
+}
+
+interface StatsProps {
+  statsData: Stat[]
+}
+
+const Stats = ({ statsData }: StatsProps) => {
   return (
     <section className='pt-4 pb-12 xl:pt-0 xl:pb-0'>
       <div className='container mx-auto relative top-3'>
         <div className='flex flex-wrap items-center justify-center gap-6 max-w-[80vw] mx-auto xl:max-w-none'>
-          {stats.map((stat, index) => {
+          {statsData.map((stat, index) => {
             return (
               <div
                 key={index}
@@ -20,7 +31,9 @@ const Stats = () => {
                 />
                 <p
                   className={`${
-                    stat.text.length < 15 ? 'max-w-[100px]' : 'max-w-[159px]'
+                    stat.text.length < 15
+                      ? 'max-w-[100px]'
+                      : 'max-w-[159px]'
                   } leading-snug text-white/80`}
                 >
                   {stat.text}
