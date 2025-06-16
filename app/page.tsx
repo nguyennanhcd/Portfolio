@@ -14,7 +14,7 @@ import { mySelf } from '@/constants/mySelf'
 import { stats } from '@/constants/stats'
 
 // Export revalidate to enable ISR for 10 days
-export const revalidate = 10 * 24 * 60 * 60 // 10 days in seconds (10 days * 24 hours * 60 minutes * 60 seconds)
+export const revalidate = 864000 // 10*24*60*60
 
 export default async function Home() {
   const statsData = stats

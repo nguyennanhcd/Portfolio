@@ -25,7 +25,7 @@ export const fetchGitHubCommits = async (
             'User-Agent': 'Node.js',
             Accept: 'application/vnd.github.v3+json',
           },
-          cache: 'no-store', // Ensure fresh data for now
+          cache: 'force-cache',
         },
       )
 
@@ -57,7 +57,7 @@ export const fetchGitHubCommits = async (
               'User-Agent': 'Node.js',
               Accept: 'application/vnd.github.v3+json',
             },
-            cache: 'no-store',
+            cache: 'force-cache',
           },
         )
 

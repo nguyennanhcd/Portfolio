@@ -8,7 +8,7 @@ const numOfCommits: number = await fetchGitHubCommits(
 const calculateYearsOfExperience = (
   startDate: string | number | Date,
 ) => {
-  const start = new Date(startDate) // e.g., '2018-06-01'
+  const start = new Date(startDate)
   const now = new Date()
   const diffInYears =
     now.getFullYear() - start.getFullYear()
