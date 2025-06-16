@@ -1,6 +1,32 @@
+import { fetchGitHubCommits } from '@/utils/fetchGithubCommits'
+
+const numOfCommits: number = await fetchGitHubCommits(
+  'nguyennanhcd',
+  process.env.githubToken!,
+)
+
+const calculateYearsOfExperience = (
+  startDate: string | number | Date,
+) => {
+  const start = new Date(startDate) // e.g., '2018-06-01'
+  const now = new Date()
+  const diffInYears =
+    now.getFullYear() - start.getFullYear()
+
+  let years = diffInYears
+  if (
+    now.getMonth() < start.getMonth() ||
+    (now.getMonth() === start.getMonth() &&
+      now.getDate() < start.getDate())
+  ) {
+    years = diffInYears - 1
+  }
+  return years
+}
+
 export const stats = [
   {
-    num: 2,
+    num: calculateYearsOfExperience('2024-01-07'),
     text: 'Years of experience',
   },
   {
@@ -12,7 +38,7 @@ export const stats = [
     text: 'Technologies Mastered',
   },
   {
-    num: 700,
+    num: numOfCommits,
     text: 'Code commits',
   },
 ]
