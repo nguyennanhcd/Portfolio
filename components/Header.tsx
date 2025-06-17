@@ -12,7 +12,8 @@ const Header = () => {
         {/* Logo */}
         <Link href='/'>
           <h1 className='font-semibold text-4xl'>
-            Hoàng Anh<span className='text-accent-default'>.</span>
+            Hoàng Anh
+            <span className='text-accent-default'>.</span>
           </h1>
         </Link>
 
@@ -20,7 +21,7 @@ const Header = () => {
         <div className='hidden xl:flex items-center gap-8'>
           <Nav />
           <Link href='/contact'>
-            <Button>Hire me</Button>
+            <Button className=''>Hire me</Button>
           </Link>
         </div>
 

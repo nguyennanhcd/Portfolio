@@ -49,7 +49,7 @@ const Services = () => {
                   {service.description}
                 </p>
                 {/* border*/}
-                <div className='border-b border-white/20 w-full'>
+                <div className='border-b border-white/20 w-full xl:mb-5'>
                   {service.title}
                 </div>
               </div>
