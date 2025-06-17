@@ -1,5 +1,5 @@
 // react
-import { useTransition } from 'react'
+import { useRef, useTransition } from 'react'
 
 // components
 import { Button } from '@/components/ui/button'
@@ -14,19 +14,32 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
-
-const [isPending, startTransition] = useTransition(
-    startTransition(async () => {
-        const (errorMessage) = await sendContactEmailAction(FormData)
-    })
-)
-
-const handleSubmitContactForm = (formData: FormData) => {}
+import toast from 'react-hot-toast'
+import { sendContactEmailAction } from '@/app/actions/email'
 
 const Form = () => {
+  const formRef = useRef<HTMLFormElement>(null)
+  const [isPending, startTransition] = useTransition()
+
+  const handleSubmitContactForm = (formData: FormData) => {
+    startTransition(async () => {
+      const { errorMessage } = await sendContactEmailAction(
+        formData,
+      )
+
+      if (!errorMessage) {
+        toast.success('Message sent successfully!')
+        formRef.current?.reset()
+      } else {
+        toast.error('Something went wrong!')
+      }
+    })
+  }
+
   return (
     <div className='xl:w-[70%] order-2 xl:order-none'>
       <form
+        ref={formRef}
         action={handleSubmitContactForm}
         className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'
       >
@@ -45,15 +58,28 @@ const Form = () => {
         </p>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
           <Input
+            name='firstName'
             type='firstName'
             placeholder='First name'
           />
-          <Input type='lastName' placeholder='Last name' />
-          <Input type='email' placeholder='Email' />
-          <Input type='phone' placeholder='Phone' />
+          <Input
+            type='lastName'
+            placeholder='Last name'
+            name='lastName'
+          />
+          <Input
+            type='email'
+            placeholder='Email'
+            name='email'
+          />
+          <Input
+            type='phone'
+            placeholder='Phone'
+            name='phone'
+          />
         </div>
         {/* select */}
-        <Select>
+        <Select name='service' autoComplete='on'>
           <SelectTrigger className='w-full'>
             <SelectValue placeholder='Select a service' />
           </SelectTrigger>
@@ -65,6 +91,9 @@ const Form = () => {
               </SelectItem>
               <SelectItem value='cst'>SEO </SelectItem>
               <SelectItem value='mst'>MMO Tools</SelectItem>
+              <SelectItem value='mst'>
+                Private Tutor
+              </SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
