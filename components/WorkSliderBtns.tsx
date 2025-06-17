@@ -22,13 +22,13 @@ const WorkSliderBtns = ({
         className={btnStyles}
         onClick={() => swiper.slidePrev()}
       >
-        <PiCaretLeftBold />
+        <PiCaretLeftBold className='cursor-pointer' />
       </button>
       <button
         className={btnStyles}
         onClick={() => swiper.slideNext()}
       >
-        <PiCaretRightBold />
+        <PiCaretRightBold className='cursor-pointer' />
       </button>
     </div>
   )

@@ -41,12 +41,15 @@ const Contact = () => {
                 Let&rsquo;s work together
               </h3>
               <p className='text-white/60'>
-                Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Animi eligendi accusamus
-                odio quibusdam quod cum sint, ullam maiores
-                quae magnam est, repellendus facere
-                asperiores labore neque esse, voluptate modi
-                tempora?
+                Ready to bring your vision to life? Whether
+                you need a stunning website, personalized
+                tutoring, English mastery, or top-tier SEO,
+                I’m here to deliver exceptional results.
+                With expertise in crafting dynamic digital
+                solutions and tailored learning experiences,
+                I partner with you to achieve your goals.
+                Let’s connect and create something
+                extraordinary!
               </p>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                 <Input
@@ -88,7 +91,10 @@ const Contact = () => {
                 placeholder='Type your message here...'
               />
               {/*button */}
-              <Button className='max-w-40' size='md'>
+              <Button
+                className='max-w-40 cursor-pointer'
+                size='md'
+              >
                 Send message
               </Button>
             </form>
