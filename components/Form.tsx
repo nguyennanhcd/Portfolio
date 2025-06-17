@@ -1,5 +1,5 @@
 // react
-import { useRef, useTransition } from 'react'
+import { useRef } from 'react'
 
 // components
 import { Button } from '@/components/ui/button'
@@ -14,33 +14,15 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
-import toast from 'react-hot-toast'
-import { sendContactEmailAction } from '@/app/actions/email'
 
 const Form = () => {
   const formRef = useRef<HTMLFormElement>(null)
-  const [isPending, startTransition] = useTransition()
-
-  const handleSubmitContactForm = (formData: FormData) => {
-    startTransition(async () => {
-      const { errorMessage } = await sendContactEmailAction(
-        formData,
-      )
-
-      if (!errorMessage) {
-        toast.success('Message sent successfully!')
-        formRef.current?.reset()
-      } else {
-        toast.error('Something went wrong!')
-      }
-    })
-  }
 
   return (
     <div className='xl:w-[70%] order-2 xl:order-none'>
       <form
         ref={formRef}
-        action={handleSubmitContactForm}
+        action=''
         className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'
       >
         <h3 className='text-4xl text-accent-default'>
