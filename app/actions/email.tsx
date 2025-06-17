@@ -1,5 +1,7 @@
 'use server'
 
+import { sendEmail } from '@/lib/sendGrid'
+
 export const sendContactEmailAction = async (
   formData: FormData,
 ) => {
