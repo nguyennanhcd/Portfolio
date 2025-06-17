@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+import { Toaster } from 'react-hot-toast'
 
 //components
 import Header from '@/components/Header'
@@ -38,6 +39,13 @@ export default function RootLayout({
         <Header />
         <StairTransition />
         <PageTransition>{children}</PageTransition>
+        <Toaster
+          toastOptions={{
+            style: {
+              textAlign: 'center',
+            },
+          }}
+        />
       </body>
     </html>
   )
