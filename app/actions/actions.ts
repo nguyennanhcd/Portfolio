@@ -3,12 +3,13 @@
 import ContactResponseEmail from '@/components/EmailTemplate';
 import { Resend } from 'resend'
 
-export async function sendEmail(formData: FormData) {
+export async function sendEmail(formData: FormData) : Promise<void> {
     const resend = new Resend(process.env.RESEND_API_KEY)
     const email = formData.get('email') as string | null
 
     if (!email) {
-        return 'Error: Something went wrong';
+        console.log('Email not found')
+        return
     }
 
     try {
@@ -20,11 +21,7 @@ export async function sendEmail(formData: FormData) {
         });
 
         console.log('Email sent successfully')   
-        return {
-            email
-        }
     } catch(error) {
-        return error
-
+        console.log(error)
     } 
 }

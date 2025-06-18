@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // components
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -18,8 +17,8 @@ const ContactForm = () => {
   return (
     <div className='xl:w-[70%] order-2 xl:order-none'>
       <form
-        action={(formData: FormData) =>
-          sendEmail(formData) as any
+        action={(formData: FormData): Promise<void> =>
+          sendEmail(formData)
         }
         className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'
       >
