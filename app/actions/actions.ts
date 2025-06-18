@@ -19,7 +19,7 @@ export async function sendEmail(formData: FormData) : Promise<void> {
         await resend.emails.send({
             from: 'onboarding@resend.dev',
             to: email,
-            subject: 'Hello World',
+            subject: 'Thanks for contacting me!',
             react: ContactResponseEmail({firstName, lastName, service})
         });
 
