@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
+import { sendEmail } from '@/app/actions/actions'
 
 const Form = () => {
   const formRef = useRef<HTMLFormElement>(null)
@@ -22,7 +23,17 @@ const Form = () => {
     <div className='xl:w-[70%] order-2 xl:order-none'>
       <form
         ref={formRef}
-        action=''
+        action={async () => {
+          if (formRef.current) {
+            const formData = new FormData(formRef.current)
+            const data: Record<string, string> = {}
+            formData.forEach((value, key) => {
+              data[key] =
+                typeof value === 'string' ? value : ''
+            })
+            await sendEmail(data as unknown as JSON)
+          }
+        }}
         className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'
       >
         <h3 className='text-4xl text-accent-default'>
@@ -71,9 +82,9 @@ const Form = () => {
               <SelectItem value='est'>
                 Web Development
               </SelectItem>
-              <SelectItem value='cst'>SEO </SelectItem>
-              <SelectItem value='mst'>MMO Tools</SelectItem>
-              <SelectItem value='mst'>
+              <SelectItem value='seo'>SEO </SelectItem>
+              <SelectItem value='mmo'>MMO Tools</SelectItem>
+              <SelectItem value='tut'>
                 Private Tutor
               </SelectItem>
             </SelectGroup>
@@ -88,6 +99,7 @@ const Form = () => {
         <Button
           className='max-w-40 cursor-pointer'
           size='md'
+          type='submit'
         >
           Send message
         </Button>
