@@ -10,21 +10,37 @@ import {
   Text,
 } from '@react-email/components'
 
-export const ContactResponseEmail = () => (
+interface Props {
+  firstName: string
+  lastName: string
+  service: string
+}
+
+export const ContactResponseEmail = ({
+  firstName,
+  lastName,
+  service,
+}: Props) => (
   <Html>
     <Head />
     <Body style={main}>
       <Preview>
-        Thanks for getting in touch, I’ll get back to you
-        soon!
+        Thanks for getting in touch, {firstName}! I’ll get
+        back to you soon!
       </Preview>
       <Container style={container}>
         <Section style={box}>
-          <Hr style={hr} />
           <Text style={paragraph}>
-            Hey there! 👋 Thank you for reaching out through
-            my website. I truly appreciate your interest in
-            my services.
+            Hey {firstName} {lastName}! 👋 Thank you for
+            reaching out through my website. I truly
+            appreciate your interest in my services.
+          </Text>
+          <Text style={paragraph}>
+            I see you&rsquo;re interested in{' '}
+            <strong className='capitalize'>
+              {service}
+            </strong>
+            . That’s awesome — it’s one of my specialties!
           </Text>
           <Text style={paragraph}>
             I offer professional help in three areas:
@@ -41,7 +57,7 @@ export const ContactResponseEmail = () => (
             </li>
           </ul>
           <Text style={paragraph}>
-            I’ll review your message and respond within 1-2
+            I’ll review your message and respond within 1–2
             business days. If it&#39;s urgent, you’re
             welcome to reply directly.
           </Text>
@@ -53,7 +69,8 @@ export const ContactResponseEmail = () => (
           </Button>
           <Hr style={hr} />
           <Text style={paragraph}>
-            Looking forward to chatting with you soon!
+            Looking forward to chatting with you soon,{' '}
+            {firstName}!
           </Text>
           <Text style={paragraph}>— Anh Nguyen</Text>
           <Hr style={hr} />
