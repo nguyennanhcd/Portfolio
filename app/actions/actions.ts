@@ -5,7 +5,10 @@ import { Resend } from 'resend'
 
 export async function sendEmail(formData: FormData) : Promise<void> {
     const resend = new Resend(process.env.RESEND_API_KEY)
-    const email = formData.get('email') as string | null
+    const email = formData.get('email') as string
+    const firstName = formData.get('firstName') as string
+    const lastName = formData.get('lastName') as string
+    const service = formData.get('service') as string
 
     if (!email) {
         console.log('Email not found')
@@ -17,7 +20,7 @@ export async function sendEmail(formData: FormData) : Promise<void> {
             from: 'onboarding@resend.dev',
             to: email,
             subject: 'Hello World',
-            react: ContactResponseEmail()
+            react: ContactResponseEmail({firstName, lastName, service})
         });
 
         console.log('Email sent successfully')   
