@@ -1,6 +1,3 @@
-// react
-import { useRef } from 'react'
-
 // components
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -17,22 +14,11 @@ import { Textarea } from '@/components/ui/textarea'
 import { sendEmail } from '@/app/actions/actions'
 
 const Form = () => {
-  const formRef = useRef<HTMLFormElement>(null)
-
   return (
     <div className='xl:w-[70%] order-2 xl:order-none'>
       <form
-        ref={formRef}
-        action={async () => {
-          if (formRef.current) {
-            const formData = new FormData(formRef.current)
-            const data: Record<string, string> = {}
-            formData.forEach((value, key) => {
-              data[key] =
-                typeof value === 'string' ? value : ''
-            })
-            await sendEmail(data as unknown as JSON)
-          }
+        action={async (formData: FormData) => {
+          await sendEmail(formData)
         }}
         className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'
       >

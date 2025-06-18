@@ -5,111 +5,63 @@ import {
   Head,
   Hr,
   Html,
-  Img,
-  Link,
   Preview,
   Section,
   Text,
 } from '@react-email/components'
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : ''
-
-export const StripeWelcomeEmail = () => (
+export const ContactResponseEmail = () => (
   <Html>
     <Head />
     <Body style={main}>
       <Preview>
-        You&#39;re now ready to make live transactions with
-        Stripe!
+        Thanks for getting in touch, I’ll get back to you
+        soon!
       </Preview>
       <Container style={container}>
         <Section style={box}>
-          <Img
-            src={`${baseUrl}/static/stripe-logo.png`}
-            width='49'
-            height='21'
-            alt='Stripe'
-          />
           <Hr style={hr} />
           <Text style={paragraph}>
-            Thanks for submitting your account information.
-            You're now ready to make live transactions with
-            Stripe!
+            Hey there! 👋 Thank you for reaching out through
+            my website. I truly appreciate your interest in
+            my services.
           </Text>
           <Text style={paragraph}>
-            You can view your payments and a variety of
-            other information about your account right from
-            your dashboard.
+            I offer professional help in three areas:
+          </Text>
+          <ul style={{ ...paragraph, paddingLeft: '20px' }}>
+            <li>🌐 Web Development (Frontend & Backend)</li>
+            <li>
+              📚 1-on-1 Private Tutoring (Coding, Math,
+              etc.)
+            </li>
+            <li>
+              🗣️ English Coaching (IELTS, conversation,
+              writing)
+            </li>
+          </ul>
+          <Text style={paragraph}>
+            I’ll review your message and respond within 1-2
+            business days. If it&#39;s urgent, you’re
+            welcome to reply directly.
           </Text>
           <Button
             style={button}
-            href='https://dashboard.stripe.com/login'
+            href='mailto:nguyennanhcd@gmail.com'
           >
-            View your Stripe Dashboard
+            Reply to this Email
           </Button>
           <Hr style={hr} />
           <Text style={paragraph}>
-            If you haven't finished your integration, you
-            might find our{' '}
-            <Link
-              style={anchor}
-              href='https://docs.stripe.com/dashboard/basics'
-            >
-              docs
-            </Link>{' '}
-            handy.
+            Looking forward to chatting with you soon!
           </Text>
-          <Text style={paragraph}>
-            Once you're ready to start accepting payments,
-            you'll just need to use your live{' '}
-            <Link
-              style={anchor}
-              href='https://dashboard.stripe.com/login?redirect=%2Fapikeys'
-            >
-              API keys
-            </Link>{' '}
-            instead of your test API keys. Your account can
-            simultaneously be used for both test and live
-            requests, so you can continue testing while
-            accepting live payments. Check out our{' '}
-            <Link
-              style={anchor}
-              href='https://docs.stripe.com/dashboard/basics'
-            >
-              tutorial about account basics
-            </Link>
-            .
-          </Text>
-          <Text style={paragraph}>
-            Finally, we've put together a{' '}
-            <Link
-              style={anchor}
-              href='https://docs.stripe.com/get-started/checklist/website'
-            >
-              quick checklist
-            </Link>{' '}
-            to ensure your website conforms to card network
-            standards.
-          </Text>
-          <Text style={paragraph}>
-            We'll be here to help you with any step along
-            the way. You can find answers to most questions
-            and get in touch with us on our{' '}
-            <Link
-              style={anchor}
-              href='https://support.stripe.com'
-            >
-              support site
-            </Link>
-            .
-          </Text>
-          <Text style={paragraph}>— The Stripe team</Text>
+          <Text style={paragraph}>— Anh Nguyen</Text>
           <Hr style={hr} />
           <Text style={footer}>
-            Stripe, 354 Oyster Point Blvd, South San
-            Francisco, CA 94080
+            Anh Nguyen • Web Developer | Private Tutor |
+            English Coach
+            <br />
+            Based in Vietnam — Available Online
           </Text>
         </Section>
       </Container>
@@ -117,7 +69,7 @@ export const StripeWelcomeEmail = () => (
   </Html>
 )
 
-export default StripeWelcomeEmail
+export default ContactResponseEmail
 
 const main = {
   backgroundColor: '#f6f9fc',
@@ -143,18 +95,13 @@ const hr = {
 
 const paragraph = {
   color: '#525f7f',
-
   fontSize: '16px',
   lineHeight: '24px',
   textAlign: 'left' as const,
 }
 
-const anchor = {
-  color: '#556cd6',
-}
-
 const button = {
-  backgroundColor: '#656ee8',
+  backgroundColor: 'oklch(0.8542 0.0517 199.29)',
   borderRadius: '5px',
   color: '#fff',
   fontSize: '16px',
@@ -169,4 +116,5 @@ const footer = {
   color: '#8898aa',
   fontSize: '12px',
   lineHeight: '16px',
+  textAlign: 'center' as const,
 }

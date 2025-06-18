@@ -1,24 +1,28 @@
 'use server'
 
-import GithubAccessTokenEmail from '@/components/EmailTemplate';
+import ContactResponseEmail from '@/components/EmailTemplate';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend'
 
-export async function sendEmail(formRef: JSON) {
+export async function sendEmail(formData: FormData) {
     const resend = new Resend(process.env.RESEND_API_KEY)
+    const email = formData.get('email') as string | null
 
-    console.log(formRef)
+    if (!email) {
+        return NextResponse.json({ error: 'Email is required' });
+    }
+
     try {
-            await resend.emails.send({
-                from: 'onboarding@resend.dev',
-                to: 'anh487303@gmail.com',
-                subject: 'Hello World',
-                react: GithubAccessTokenEmail()
-            });
-            return NextResponse.json('You have sent your information for me successfully')
-    
+        await resend.emails.send({
+            from: 'onboarding@resend.dev',
+            to: email,
+            subject: 'Hello World',
+            react: ContactResponseEmail()
+        });
+
+        console.log('Email sent successfully')    
         } catch (error) {
-            return NextResponse.json({error})
+            console.log(error)
         }
 
 }
