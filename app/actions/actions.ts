@@ -25,7 +25,7 @@ export async function sendEmail(formData: FormData): Promise<void> {
   const result = ContactFormSchema.safeParse(raw)
 
   if (!result.success) {
-    console.log('❌ Validation failed:', result.error.flatten())
+    console.log('Validation failed:', result.error.flatten())
     return
   }
 
