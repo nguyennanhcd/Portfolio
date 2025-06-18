@@ -1,30 +1,49 @@
 'use server'
 
-import ContactResponseEmail from '@/components/EmailTemplate';
+import ContactResponseEmail from '@/components/EmailTemplate'
 import { Resend } from 'resend'
+import { z } from 'zod'
 
-export async function sendEmail(formData: FormData) : Promise<void> {
+// 1. Define schema for validation
+const ContactFormSchema = z.object({
+  email: z.string().email(),
+  firstName: z.string().min(1),
+  lastName: z.string().min(1),
+  service: z.string().min(1),
+})
+
+export async function sendEmail(formData: FormData): Promise<void> {
+    
+  const raw = {
+    email: formData.get('email'),
+    firstName: formData.get('firstName'),
+    lastName: formData.get('lastName'),
+    service: formData.get('service'),
+  }
+
+  // 2. Validate the extracted data
+  const result = ContactFormSchema.safeParse(raw)
+
+  if (!result.success) {
+    console.log('❌ Validation failed:', result.error.flatten())
+    return
+  }
+
+  // 3. Use validated + typed data
+  const { email, firstName, lastName, service } = result.data
+
+  try {
     const resend = new Resend(process.env.RESEND_API_KEY)
-    const email = formData.get('email') as string
-    const firstName = formData.get('firstName') as string
-    const lastName = formData.get('lastName') as string
-    const service = formData.get('service') as string
 
-    if (!email) {
-        console.log('Email not found')
-        return
-    }
+    await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: email,
+      subject: 'Thanks for contacting me!',
+      react: ContactResponseEmail({ firstName, lastName, service }),
+    })
 
-    try {
-        await resend.emails.send({
-            from: 'onboarding@resend.dev',
-            to: email,
-            subject: 'Thanks for contacting me!',
-            react: ContactResponseEmail({firstName, lastName, service})
-        });
-
-        console.log('Email sent successfully')   
-    } catch(error) {
-        console.log(error)
-    } 
+    console.log('Email sent successfully')
+  } catch (error) {
+    console.error('Failed to send email:', error)
+  }
 }
