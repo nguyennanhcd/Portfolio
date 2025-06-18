@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // components
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -13,13 +14,13 @@ import {
 import { Textarea } from '@/components/ui/textarea'
 import { sendEmail } from '@/app/actions/actions'
 
-const Form = () => {
+const ContactForm = () => {
   return (
     <div className='xl:w-[70%] order-2 xl:order-none'>
       <form
-        action={async (formData: FormData) => {
-          await sendEmail(formData)
-        }}
+        action={(formData: FormData) =>
+          sendEmail(formData) as any
+        }
         className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'
       >
         <h3 className='text-4xl text-accent-default'>
@@ -40,6 +41,7 @@ const Form = () => {
             name='firstName'
             type='firstName'
             placeholder='First name'
+            defaultValue={''}
           />
           <Input
             type='lastName'
@@ -87,11 +89,11 @@ const Form = () => {
           size='md'
           type='submit'
         >
-          Send message
+          Send
         </Button>
       </form>
     </div>
   )
 }
 
-export default Form
+export default ContactForm

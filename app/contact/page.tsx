@@ -1,6 +1,6 @@
 'use client'
 
-import Form from '@/components/Form'
+import Form from '@/components/ContactForm'
 
 import { info } from '@/constants/info'
 import { motion } from 'framer-motion'
