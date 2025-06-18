@@ -1,7 +1,6 @@
 'use server'
 
 import ContactResponseEmail from '@/components/EmailTemplate';
-import { NextResponse } from 'next/server';
 import { Resend } from 'resend'
 
 export async function sendEmail(formData: FormData) {
@@ -9,7 +8,7 @@ export async function sendEmail(formData: FormData) {
     const email = formData.get('email') as string | null
 
     if (!email) {
-        return NextResponse.json({ error: 'Email is required' });
+        return 'Error: Something went wrong';
     }
 
     try {
@@ -20,9 +19,12 @@ export async function sendEmail(formData: FormData) {
             react: ContactResponseEmail()
         });
 
-        console.log('Email sent successfully')    
-        } catch (error) {
-            console.log(error)
+        console.log('Email sent successfully')   
+        return {
+            email
         }
+    } catch(error) {
+        return error
 
+    } 
 }
