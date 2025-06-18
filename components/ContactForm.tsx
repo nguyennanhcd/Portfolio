@@ -66,12 +66,14 @@ const ContactForm = () => {
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Select a service</SelectLabel>
-              <SelectItem value='est'>
+              <SelectItem value='Web Development'>
                 Web Development
               </SelectItem>
-              <SelectItem value='seo'>SEO </SelectItem>
-              <SelectItem value='mmo'>MMO Tools</SelectItem>
-              <SelectItem value='tut'>
+              <SelectItem value='SEO'>SEO </SelectItem>
+              <SelectItem value='English Teacher'>
+                English Teacher
+              </SelectItem>
+              <SelectItem value='Private Tutor'>
                 Private Tutor
               </SelectItem>
             </SelectGroup>

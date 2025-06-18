@@ -30,7 +30,7 @@ const Contact = () => {
               {info.map((item, index) => (
                 <li
                   key={index}
-                  className='flex items-center gap-6 xl: ml-8'
+                  className='flex items-center gap-6 xl:ml-2'
                 >
                   <div className='w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] rounded-md text-accent-default flex justify-center items-center'>
                     <div className='text-[28px]'>
