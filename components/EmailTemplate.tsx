@@ -1,6 +1,5 @@
 import {
   Body,
-  Button,
   Container,
   Head,
   Hr,
@@ -14,71 +13,46 @@ interface Props {
   firstName: string
   lastName: string
   service: string
+  email: string
+  phone: string
 }
 
-export const ContactResponseEmail = ({
+export const ContactNotificationEmail = ({
   firstName,
   lastName,
   service,
+  email,
+  phone,
 }: Props) => (
   <Html>
     <Head />
+    <Preview>
+      {firstName} {lastName} just contacted you via your
+      portfolio website!
+    </Preview>
     <Body style={main}>
-      <Preview>
-        Thanks for getting in touch, {firstName}! I’ll get
-        back to you soon!
-      </Preview>
       <Container style={container}>
         <Section style={box}>
           <Text style={paragraph}>
-            Hey {firstName} {lastName}! 👋 Thank you for
-            reaching out through my website. I truly
-            appreciate your interest in my services.
+            🚨 <strong>New Contact Request</strong>
           </Text>
-          <Text style={paragraph}>
-            I see you&rsquo;re interested in{' '}
-            <strong className='capitalize'>
-              {service}
-            </strong>
-            . That’s awesome — it’s one of my specialties!
-          </Text>
-          <Text style={paragraph}>
-            I offer professional help in three areas:
-          </Text>
-          <ul style={{ ...paragraph, paddingLeft: '20px' }}>
-            <li>🌐 Web Development (Frontend & Backend)</li>
-            <li>
-              📚 1-on-1 Private Tutoring (Coding, Math,
-              etc.)
-            </li>
-            <li>
-              🗣️ English Coaching (IELTS, conversation,
-              writing)
-            </li>
-          </ul>
-          <Text style={paragraph}>
-            I’ll review your message and respond within 1–2
-            business days. If it&#39;s urgent, you’re
-            welcome to reply directly.
-          </Text>
-          <Button
-            style={button}
-            href='mailto:anh487303@gmail.com'
-          >
-            Reply to this Email
-          </Button>
           <Hr style={hr} />
           <Text style={paragraph}>
-            Looking forward to chatting with you soon,{' '}
-            {firstName}!
+            You just received a new message through your
+            website contact form. Here&rsquo;s the info:
           </Text>
-          <Text style={paragraph}>— Anh Nguyen</Text>
-          <Hr style={hr} />
-          <Text style={footer}>
-            Anh Nguyen • Web Developer | Private Tutor |
-            English Coach
+          <Text style={paragraph}>
+            <strong>Name:</strong> {firstName} {lastName}
             <br />
-            Based in Vietnam — Available Online
+            <strong>Email:</strong> {email}
+            <br />
+            <strong>Phone:</strong> {phone}
+            <br />
+            <strong>Interested in:</strong> {service}
+          </Text>
+          <Hr style={hr} />
+          <Text style={paragraph}>
+            Go follow up with them soon 🚀
           </Text>
         </Section>
       </Container>
@@ -86,7 +60,7 @@ export const ContactResponseEmail = ({
   </Html>
 )
 
-export default ContactResponseEmail
+export default ContactNotificationEmail
 
 const main = {
   backgroundColor: '#f6f9fc',
@@ -115,23 +89,4 @@ const paragraph = {
   fontSize: '16px',
   lineHeight: '24px',
   textAlign: 'left' as const,
-}
-
-const button = {
-  backgroundColor: 'oklch(0.8542 0.0517 199.29)',
-  borderRadius: '5px',
-  color: '#fff',
-  fontSize: '16px',
-  fontWeight: 'bold',
-  textDecoration: 'none',
-  textAlign: 'center' as const,
-  display: 'block',
-  padding: '10px',
-}
-
-const footer = {
-  color: '#8898aa',
-  fontSize: '12px',
-  lineHeight: '16px',
-  textAlign: 'center' as const,
 }
