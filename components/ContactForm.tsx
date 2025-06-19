@@ -13,18 +13,42 @@ import {
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { sendEmail } from '@/app/actions/actions'
-import { useState } from 'react'
+import {
+  useActionState,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import toast from 'react-hot-toast'
 
 const ContactForm = () => {
   const [service, setService] = useState('')
+  const [response, action, isPending] = useActionState(
+    sendEmail,
+    null,
+  )
+
+  const lastToastIdRef = useRef<string | null>(null)
+
+  useEffect(() => {
+    if (response && response.message) {
+      if (lastToastIdRef.current) {
+        toast.dismiss(lastToastIdRef.current)
+      }
+
+      const id =
+        response.status === 'success'
+          ? toast.success(response.message)
+          : toast.error(response.message)
+
+      lastToastIdRef.current = id
+    }
+  }, [response, response?.timestamp])
 
   return (
     <div className='xl:w-[70%] order-2 xl:order-none'>
       <form
-        action={async (formData: FormData) => {
-          formData.set('service', service) // 👈 manually set selected service
-          await sendEmail(formData)
-        }}
+        action={action}
         className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'
       >
         <h3 className='text-4xl text-accent-default'>
@@ -65,7 +89,6 @@ const ContactForm = () => {
           />
         </div>
 
-        {/* Service select */}
         <Select value={service} onValueChange={setService}>
           <SelectTrigger className='w-full'>
             <SelectValue placeholder='Select a service' />
@@ -87,15 +110,20 @@ const ContactForm = () => {
           </SelectContent>
         </Select>
 
-        {/* Message */}
+        {/* Hidden input to include service in form data */}
+        <input
+          type='hidden'
+          name='service'
+          value={service}
+        />
+
         <Textarea
-          name='message'
           className='h-[200px]'
           placeholder='Type your message here...'
         />
 
-        <Button type='submit' className='max-w-40'>
-          Send
+        <Button className='max-w-40' disabled={isPending}>
+          {isPending ? 'Loading...' : 'Send'}
         </Button>
       </form>
     </div>

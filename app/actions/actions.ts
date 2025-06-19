@@ -1,39 +1,42 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use server'
 
 import ContactResponseEmail from '@/components/EmailTemplate'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
-// 1. Define schema for validation
 const ContactFormSchema = z.object({
   email: z.string().email(),
   firstName: z.string().min(1),
   lastName: z.string().min(1),
   service: z.string().min(1),
   phone: z.string().regex(/^\d{10,15}$/, {
-  message: 'Phone number must be 10 to 15 digits',
-}),
+    message: 'Phone number must be 10 to 15 digits',
+  }),
 })
 
-export async function sendEmail(formData: FormData): Promise<void> {
-    
+export async function sendEmail(prevState: any, formData: FormData) {
   const raw = {
     email: formData.get('email'),
     firstName: formData.get('firstName'),
     lastName: formData.get('lastName'),
     service: formData.get('service'),
     phone: formData.get('phone'),
+    message: formData.get('message'),
   }
 
-  // 2. Validate the extracted data
   const result = ContactFormSchema.safeParse(raw)
 
   if (!result.success) {
-    console.log('Validation failed:', result.error.flatten())
-    return
+    const errorMessages = result.error.flatten().fieldErrors
+    console.log('Validation failed:', errorMessages)
+    return {
+      status: 'error',
+      message: 'Validation failed: Please check your inputs.',
+      timestamp: Date.now(), // 👈 để luôn khác nhau
+    }
   }
 
-  // 3. Use validated + typed data
   const { email, firstName, lastName, service, phone } = result.data
 
   try {
@@ -43,11 +46,27 @@ export async function sendEmail(formData: FormData): Promise<void> {
       from: 'onboarding@resend.dev',
       to: 'anh487303@gmail.com',
       subject: `New Contact Request from ${firstName} ${lastName}`,
-      react: ContactResponseEmail({ firstName, lastName, email, service, phone }),
+      react: ContactResponseEmail({
+        firstName,
+        lastName,
+        email,
+        service,
+        phone,
+      }),
     })
 
-    console.log('Email sent successfully')
+    return {
+      status: 'success',
+      message: 'Email sent successfully',
+      timestamp: Date.now(),
+    }
   } catch (error) {
-    console.error('Failed to send email:', error)
+    console.log(error)
+    return {
+      status: 'error',
+      message: 'Failed to send email. Please try again.',
+      timestamp: Date.now(),
+    }
   }
 }
+
