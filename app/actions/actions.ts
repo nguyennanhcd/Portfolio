@@ -10,6 +10,9 @@ const ContactFormSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().min(1),
   service: z.string().min(1),
+  phone: z.string().regex(/^\d{10,15}$/, {
+  message: 'Phone number must be 10 to 15 digits',
+}),
 })
 
 export async function sendEmail(formData: FormData): Promise<void> {
@@ -19,6 +22,7 @@ export async function sendEmail(formData: FormData): Promise<void> {
     firstName: formData.get('firstName'),
     lastName: formData.get('lastName'),
     service: formData.get('service'),
+    phone: formData.get('phone'),
   }
 
   // 2. Validate the extracted data
@@ -30,16 +34,16 @@ export async function sendEmail(formData: FormData): Promise<void> {
   }
 
   // 3. Use validated + typed data
-  const { email, firstName, lastName, service } = result.data
+  const { email, firstName, lastName, service, phone } = result.data
 
   try {
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: email,
-      subject: 'Thanks for contacting me!',
-      react: ContactResponseEmail({ firstName, lastName, service }),
+      to: 'anh487303@gmail.com',
+      subject: `New Contact Request from ${firstName} ${lastName}`,
+      react: ContactResponseEmail({ firstName, lastName, email, service, phone }),
     })
 
     console.log('Email sent successfully')
