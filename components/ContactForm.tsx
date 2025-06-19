@@ -123,7 +123,11 @@ const ContactForm = () => {
         />
 
         <Button className='max-w-40' disabled={isPending}>
-          {isPending ? 'Loading...' : 'Send'}
+          {isPending ? (
+            <div className='loader text-[3px]'></div>
+          ) : (
+            'Send'
+          )}
         </Button>
       </form>
     </div>
