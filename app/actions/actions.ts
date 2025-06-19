@@ -16,6 +16,7 @@ const ContactFormSchema = z.object({
 })
 
 export async function sendEmail(prevState: any, formData: FormData) {
+  
   const raw = {
     email: formData.get('email'),
     firstName: formData.get('firstName'),
@@ -33,7 +34,7 @@ export async function sendEmail(prevState: any, formData: FormData) {
     return {
       status: 'error',
       message: 'Validation failed: Please check your inputs.',
-      timestamp: Date.now(), // 👈 để luôn khác nhau
+      timestamp: Date.now(),
     }
   }
 
