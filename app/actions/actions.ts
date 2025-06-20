@@ -1,7 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 'use server'
 
 import ContactResponseEmail from '@/components/EmailTemplate'
+import { FeedbackState } from '@/types/contact'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
@@ -15,7 +16,8 @@ const ContactFormSchema = z.object({
   }),
 })
 
-export async function sendEmail(prevState: any, formData: FormData) {
+
+export async function sendEmail(prevState: FeedbackState, formData: FormData): Promise<FeedbackState> {
   
   const raw = {
     email: formData.get('email'),
@@ -34,7 +36,7 @@ export async function sendEmail(prevState: any, formData: FormData) {
     return {
       status: 'error',
       message: 'Validation failed: Please check your inputs.',
-      timestamp: Date.now(),
+      timeStamp: Date.now(),
     }
   }
 
@@ -59,14 +61,14 @@ export async function sendEmail(prevState: any, formData: FormData) {
     return {
       status: 'success',
       message: 'Email sent successfully',
-      timestamp: Date.now(),
+      timeStamp: Date.now(),
     }
   } catch (error) {
     console.log(error)
     return {
       status: 'error',
       message: 'Failed to send email. Please try again.',
-      timestamp: Date.now(),
+      timeStamp: Date.now(),
     }
   }
 }
