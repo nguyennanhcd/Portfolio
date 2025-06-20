@@ -51,7 +51,6 @@ const ContactForm = () => {
       lastToastIdRef.current = id
     }
   }, [response, response?.timeStamp])
-
   return (
     <div className='xl:w-[70%] order-2 xl:order-none'>
       <form
