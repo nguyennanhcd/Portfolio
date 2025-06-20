@@ -20,12 +20,19 @@ import {
   useState,
 } from 'react'
 import toast from 'react-hot-toast'
+import { FeedbackState } from '@/types/contact'
+
+const initialState: FeedbackState = {
+  status: 'idle',
+  message: '',
+  timeStamp: Date.now(),
+}
 
 const ContactForm = () => {
   const [service, setService] = useState('')
   const [response, action, isPending] = useActionState(
     sendEmail,
-    null,
+    initialState,
   )
 
   const lastToastIdRef = useRef<string | null>(null)
@@ -43,7 +50,7 @@ const ContactForm = () => {
 
       lastToastIdRef.current = id
     }
-  }, [response, response?.timestamp])
+  }, [response, response?.timeStamp])
 
   return (
     <div className='xl:w-[70%] order-2 xl:order-none'>
