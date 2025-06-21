@@ -1,9 +1,23 @@
-'use client'
-
 import Form from '@/components/ContactForm'
 
 import { info } from '@/constants/info'
 import { motion } from 'framer-motion'
+
+import { createMetadata } from '@/lib/metadata'
+
+export const metadata = createMetadata({
+  title: 'Contact',
+  description:
+    'Get in touch with me for collaboration, inquiries, or project discussions.',
+  keywords: [
+    'contact',
+    'web developer',
+    'collaboration',
+    'freelance',
+  ],
+  ogImage:
+    'https://gitlab.com/nguyennanhcd1/image-container/-/raw/main/portfolio-image/Screenshot%202025-06-21%20073336.png?ref_type=heads',
+})
 
 const Contact = () => {
   return (
