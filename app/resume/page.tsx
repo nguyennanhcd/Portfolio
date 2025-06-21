@@ -12,7 +12,7 @@ export const metadata = createMetadata({
     'web developer',
   ],
   ogImage:
-    'https://gitlab.com/nguyennanhcd1/image-container/-/raw/main/portfolio-image/Screenshot%202025-06-21%20073248.png?ref_type=heads',
+    'https://github.com/nguyennanhcd/image_container/blob/main/portfolio-image/resume.png?raw=true',
 })
 
 const Resume = () => {
