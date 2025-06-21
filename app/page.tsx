@@ -13,8 +13,30 @@ import TypeWriter from '@/components/TypeWritter'
 import { mySelf } from '@/constants/mySelf'
 import { stats } from '@/constants/stats'
 
+//utils
+import { createMetadata } from '@/lib/metadata'
+
 // Export revalidate to enable ISR for 10 days
 export const revalidate = 864000 // 10*24*60*60
+
+export const metadata = createMetadata({
+  title: 'Home',
+  description:
+    "Welcome to Nguyen's Portfolio! I'm a passionate web developer and educator offering innovative web solutions and personalized tutoring.",
+  keywords: [
+    'web developer',
+    'portfolio',
+    'introduction',
+    'freelance',
+    'english teacher',
+    'private tutor',
+    'web development',
+    'tutoring',
+    'seo',
+  ],
+  ogImage:
+    'https://gitlab.com/nguyennanhcd1/image-container/-/raw/main/portfolio-image/Screenshot%202025-06-21%20072326.png?ref_type=heads',
+})
 
 export default async function Home() {
   const statsData = stats

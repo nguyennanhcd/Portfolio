@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Tooltip,
   TooltipTrigger,
@@ -14,6 +12,22 @@ import { BsArrowUpRight, BsGithub } from 'react-icons/bs'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import Image from 'next/image'
+
+import { createMetadata } from '@/lib/metadata'
+
+export const metadata = createMetadata({
+  title: 'Work',
+  description:
+    'Discover my portfolio of projects, showcasing innovative web development and creative solutions.',
+  keywords: [
+    'projects',
+    'portfolio',
+    'web development',
+    'freelance',
+  ],
+  ogImage:
+    'https://gitlab.com/nguyennanhcd1/image-container/-/raw/main/portfolio-image/Screenshot%202025-06-21%20073315.png?ref_type=heads',
+})
 
 //components
 import WorkSliderBtns from '@/components/WorkSliderBtns'

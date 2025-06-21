@@ -1,15 +1,39 @@
-'use client'
-
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { about, education, experience, skills } from '@/constants/about'
+import {
+  about,
+  education,
+  experience,
+  skills,
+} from '@/constants/about'
 import { motion } from 'framer-motion'
+
+import { createMetadata } from '@/lib/metadata'
+
+export const metadata = createMetadata({
+  title: 'Resume',
+  description:
+    'Learn about my educational background and professional experience as a web developer and educator.',
+  keywords: [
+    'resume',
+    'education',
+    'experience',
+    'web developer',
+  ],
+  ogImage:
+    'https://gitlab.com/nguyennanhcd1/image-container/-/raw/main/portfolio-image/Screenshot%202025-06-21%20073248.png?ref_type=heads',
+})
 
 const Resume = () => {
   return (
@@ -31,10 +55,18 @@ const Resume = () => {
           className='flex flex-col xl:flex-row gap-[60px]'
         >
           <TabsList className='flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6'>
-            <TabsTrigger value={'experience'}>Experience</TabsTrigger>
-            <TabsTrigger value={'education'}>Education</TabsTrigger>
-            <TabsTrigger value={'skills'}>Skills</TabsTrigger>
-            <TabsTrigger value={'about'}>About me</TabsTrigger>
+            <TabsTrigger value={'experience'}>
+              Experience
+            </TabsTrigger>
+            <TabsTrigger value={'education'}>
+              Education
+            </TabsTrigger>
+            <TabsTrigger value={'skills'}>
+              Skills
+            </TabsTrigger>
+            <TabsTrigger value={'about'}>
+              About me
+            </TabsTrigger>
           </TabsList>
 
           {/* content */}
@@ -42,7 +74,9 @@ const Resume = () => {
             {/*experience */}
             <TabsContent value={'experience'}>
               <div className='flex flex-col gap-[30px] text-center xl:text-left'>
-                <h3 className='text-4xl font-bold'>{experience.title}</h3>
+                <h3 className='text-4xl font-bold'>
+                  {experience.title}
+                </h3>
                 <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0'>
                   {experience.description}
                 </p>
@@ -63,7 +97,9 @@ const Resume = () => {
                           <div>
                             {/* dot */}
                             <span className='w-[6px] h-[6px] rounded-full bg-accent-default'></span>
-                            <p className='text-white/60'>{item.company}</p>
+                            <p className='text-white/60'>
+                              {item.company}
+                            </p>
                           </div>
                         </li>
                       )
@@ -76,7 +112,9 @@ const Resume = () => {
             {/*education */}
             <TabsContent value={'education'}>
               <div className='flex flex-col gap-[30px] text-center xl:text-left'>
-                <h3 className='text-4xl font-bold'>{education.title}</h3>
+                <h3 className='text-4xl font-bold'>
+                  {education.title}
+                </h3>
                 <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0'>
                   {education.description}
                 </p>
@@ -97,7 +135,9 @@ const Resume = () => {
                           <div>
                             {/* dot */}
                             <span className='w-[6px] h-[6px] rounded-full bg-accent-default'></span>
-                            <p className='text-white/60'>{item.institution}</p>
+                            <p className='text-white/60'>
+                              {item.institution}
+                            </p>
                           </div>
                         </li>
                       )
@@ -108,10 +148,15 @@ const Resume = () => {
             </TabsContent>
 
             {/*Skills */}
-            <TabsContent value={'skills'} className='w-full h-full'>
+            <TabsContent
+              value={'skills'}
+              className='w-full h-full'
+            >
               <div className='flex flex-col gap-[30px]'>
                 <div className='flex flex-col gap-[30px] text-center xl:text-left'>
-                  <h3 className='text-4xl font-bold'>{skills.title}</h3>
+                  <h3 className='text-4xl font-bold'>
+                    {skills.title}
+                  </h3>
                   <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0'>
                     {skills.description}
                   </p>
@@ -120,7 +165,9 @@ const Resume = () => {
                   {skills.skillList.map((skill, index) => {
                     return (
                       <li key={index}>
-                        <TooltipProvider delayDuration={100}>
+                        <TooltipProvider
+                          delayDuration={100}
+                        >
                           <Tooltip>
                             <TooltipTrigger className='w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group'>
                               <div className='text-5xl group-hover:text-accent-default transition-all duration-500'>
@@ -128,7 +175,9 @@ const Resume = () => {
                               </div>
                             </TooltipTrigger>
                             <TooltipContent>
-                              <p className='capitalize'>{skill.name}</p>
+                              <p className='capitalize'>
+                                {skill.name}
+                              </p>
                             </TooltipContent>
                           </Tooltip>
                         </TooltipProvider>
@@ -145,7 +194,9 @@ const Resume = () => {
               className='w-full text-center xl:text-left'
             >
               <div className='flex flex-col gap-[30px]'>
-                <h3 className='text-4xl font-bold'>{about.title}</h3>
+                <h3 className='text-4xl font-bold'>
+                  {about.title}
+                </h3>
                 <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0 '>
                   {about.description}
                 </p>
@@ -155,8 +206,12 @@ const Resume = () => {
                       key={index}
                       className='flex items-center justify-center xl:justify-start gap-4'
                     >
-                      <span className='text-white/60'>{item.fieldName}</span>
-                      <span className='text-xl'>{item.fieldValue}</span>
+                      <span className='text-white/60'>
+                        {item.fieldName}
+                      </span>
+                      <span className='text-xl'>
+                        {item.fieldValue}
+                      </span>
                     </li>
                   ))}
                 </ul>
