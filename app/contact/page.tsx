@@ -12,7 +12,7 @@ export const metadata = createMetadata({
     'freelance',
   ],
   ogImage:
-    'https://gitlab.com/nguyennanhcd1/image-container/-/raw/main/portfolio-image/Screenshot%202025-06-21%20073336.png?ref_type=heads',
+    'https://github.com/nguyennanhcd/image_container/blob/main/portfolio-image/contact.png?raw=true',
 })
 
 const Contact = () => {
