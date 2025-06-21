@@ -21,6 +21,7 @@ export const revalidate = 864000 // 10*24*60*60
 
 export const metadata = createMetadata({
   title: 'Web Developer Portfolio of Nguyen Hoang Anh ',
+
   description:
     "Welcome to Nguyen's Portfolio! I'm a passionate web developer and educator offering innovative web solutions and personalized tutoring.",
   keywords: [
