@@ -1,13 +1,32 @@
 'use client'
+import dynamic from 'next/dynamic'
 
-import Form from '@/components/ContactForm'
+// Dynamically import components and libraries
+const Form = dynamic(
+  () => import('@/components/ContactForm'),
+  {
+    ssr: false, // Client-only, assuming form uses browser APIs
+    loading: () => <div>Loading Form...</div>,
+  },
+)
 
+const MotionSection = dynamic(
+  () =>
+    import('framer-motion').then(
+      (mod) => mod.motion.section,
+    ),
+  {
+    ssr: false,
+    loading: () => <div>Loading Animation...</div>,
+  },
+)
+
+// Static import for constants (no need for dynamic import unless large)
 import { info } from '@/constants/info'
-import { motion } from 'framer-motion'
 
 const ContactClient = () => {
   return (
-    <motion.section
+    <MotionSection
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
@@ -51,7 +70,7 @@ const ContactClient = () => {
           </div>
         </div>
       </div>
-    </motion.section>
+    </MotionSection>
   )
 }
 

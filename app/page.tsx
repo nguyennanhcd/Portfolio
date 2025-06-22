@@ -1,13 +1,42 @@
-// app/page.jsx
-// This is a Server Component by default (no 'use client' at the page level)
-import { Button } from '@/components/ui/button'
-import { FiDownload } from 'react-icons/fi'
+import dynamic from 'next/dynamic'
 
-// Components
-import Social from '@/components/Social'
-import Photo from '@/components/Photo'
-import Stats from '@/components/Stats'
-import TypeWriter from '@/components/TypeWritter'
+// Dynamically import components with a loading fallback
+const Button = dynamic(
+  () =>
+    import('@/components/ui/button').then(
+      (mod) => mod.Button,
+    ),
+  {
+    loading: () => <div>Loading Button...</div>,
+  },
+)
+const Social = dynamic(
+  () => import('@/components/Social'),
+  {
+    loading: () => <div>Loading Social...</div>,
+  },
+)
+const Photo = dynamic(() => import('@/components/Photo'), {
+  loading: () => <div>Loading Photo...</div>,
+})
+const Stats = dynamic(() => import('@/components/Stats'), {
+  loading: () => <div>Loading Stats...</div>,
+})
+const TypeWriter = dynamic(
+  () => import('@/components/TypeWritter'),
+  {
+    loading: () => <div>Loading TypeWriter...</div>,
+  },
+)
+
+// Dynamically import react-icons
+const FiDownload = dynamic(
+  () =>
+    import('react-icons/fi').then((mod) => mod.FiDownload),
+  {
+    loading: () => <div>Loading Icon...</div>,
+  },
+)
 
 // Constants
 import { mySelf } from '@/constants/mySelf'
