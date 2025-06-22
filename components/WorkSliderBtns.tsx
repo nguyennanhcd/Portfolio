@@ -19,12 +19,14 @@ const WorkSliderBtns = ({
   return (
     <div className={containerStyles}>
       <button
+        aria-label='Move to previous project'
         className={btnStyles}
         onClick={() => swiper.slidePrev()}
       >
         <PiCaretLeftBold className='cursor-pointer' />
       </button>
       <button
+        aria-label='Move to next project'
         className={btnStyles}
         onClick={() => swiper.slideNext()}
       >

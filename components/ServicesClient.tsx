@@ -41,6 +41,7 @@ export default function ServicesClient() {
                     {service.num}
                   </div>
                   <Link
+                    aria-label={`View my ${service.title} works`}
                     href={service.href}
                     className='w-[60px] h-[60px] rounded-full bg-white group-hover:bg-accent-default transition-all duration-500 flex justify-center items-center hover:-rotate-45'
                   >

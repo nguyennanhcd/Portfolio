@@ -17,7 +17,10 @@ const MobileNav = () => {
     <Sheet>
       <SheetTitle className='sr-only'></SheetTitle>
       <SheetTrigger className='flex justify-center items-center'>
-        <CiMenuFries className='text-[32px] text-accent-default' />
+        <CiMenuFries
+          aria-label='Open navigation menu'
+          className='text-[32px] text-accent-default'
+        />
       </SheetTrigger>
 
       <SheetContent className='flex flex-col'>
@@ -25,7 +28,7 @@ const MobileNav = () => {
         <div className='mt-42 mb-40 text-center text-2xl'>
           <Link href='/'>
             <h1 className='font-semibold text-4xl'>
-              Ngoc Dung
+              Hoàng Anh
               <span className='text-accent-default'>.</span>
             </h1>
           </Link>

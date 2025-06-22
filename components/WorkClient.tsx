@@ -66,7 +66,6 @@ const WorkClient = () => {
                     className='text-xl text-accent-default'
                   >
                     {item.name}
-
                     {/* comma */}
                     {index !== project.stack.length - 1 &&
                       ','}
@@ -79,10 +78,19 @@ const WorkClient = () => {
               {/* buttons */}
               <div className='flex items-center gap-4'>
                 {/* live project button */}
-                <Link href={project.live}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group cursor-pointer'>
+                <Link
+                  href={project.live}
+                  aria-label='Open live project'
+                >
+                  <TooltipProvider
+                    delayDuration={100}
+                    aria-label='Project repository'
+                  >
+                    <Tooltip aria-label='Project repository'>
+                      <TooltipTrigger
+                        aria-label='Open live project'
+                        className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group cursor-pointer'
+                      >
                         <BsArrowUpRight className='text-white text-xl group-hover:text-accent-default group-hover:scale-130  transition-all duration-500' />
                       </TooltipTrigger>
                       <TooltipContent>
@@ -93,10 +101,19 @@ const WorkClient = () => {
                 </Link>
 
                 {/* github project button */}
-                <Link href={project.github}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group cursor-pointer'>
+                <Link
+                  href={project.github}
+                  aria-label='Project repository'
+                >
+                  <TooltipProvider
+                    aria-label='Project repository'
+                    delayDuration={100}
+                  >
+                    <Tooltip aria-label='Project repository'>
+                      <TooltipTrigger
+                        aria-label='Project repository'
+                        className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group cursor-pointer'
+                      >
                         <BsGithub className='text-white text-xl group-hover:text-accent-default group-hover:scale-130  transition-all duration-500' />
                       </TooltipTrigger>
                       <TooltipContent>

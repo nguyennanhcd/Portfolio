@@ -57,9 +57,9 @@ const ContactForm = () => {
         action={action}
         className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'
       >
-        <h3 className='text-4xl text-accent-default'>
+        <p className='text-4xl text-accent-default'>
           Let&rsquo;s work together
-        </h3>
+        </p>
         <p className='text-white/60'>
           Ready to bring your vision to life? Whether you
           need a stunning website, personalized tutoring,
@@ -95,8 +95,15 @@ const ContactForm = () => {
           />
         </div>
 
-        <Select value={service} onValueChange={setService}>
-          <SelectTrigger className='w-full'>
+        <Select
+          aria-label='Choose a service'
+          value={service}
+          onValueChange={setService}
+        >
+          <SelectTrigger
+            className='w-full'
+            aria-label='Choose a service'
+          >
             <SelectValue placeholder='Select a service' />
           </SelectTrigger>
           <SelectContent>
