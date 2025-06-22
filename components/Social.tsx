@@ -1,5 +1,4 @@
 import { socials } from '@/constants/socials'
-import Link from 'next/link'
 import React from 'react'
 
 interface SocialProps {
@@ -9,15 +8,21 @@ interface SocialProps {
 
 const Social: React.FC<SocialProps> = ({
   containerStyles = '',
-  iconStyles = ''
+  iconStyles = '',
 }) => {
   return (
     <div className={containerStyles}>
       {socials.map((social, index) => {
         return (
-          <Link key={index} href={social.path} className={iconStyles}>
+          <a
+            key={index}
+            href={social.path}
+            className={iconStyles}
+            rel='noopener noreferrer'
+            target='_blank'
+          >
             {social.icon}
-          </Link>
+          </a>
         )
       })}
     </div>
