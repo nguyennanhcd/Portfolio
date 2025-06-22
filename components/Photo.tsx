@@ -19,7 +19,7 @@ const Photo = () => {
       >
         {/*Image */}
         <motion.div
-          className='w-[298px] h-[298px] xl:w-[498px] xl:h[498px] mix-blend-lighten absolute xl:top-20'
+          className='w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute '
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
@@ -33,7 +33,7 @@ const Photo = () => {
           <Image
             src='/assets/photo.jpeg'
             priority
-            quality={100}
+            quality={75}
             fill
             alt='myself'
             className='object-contain'
