@@ -6,14 +6,17 @@ import {
 
 export const socials = [
   {
+    name: 'Github',
     icon: <FaGithub />,
     path: 'https://github.com/nguyennanhcd',
   },
   {
+    name: 'Facebook',
     icon: <FaFacebook />,
     path: 'https://www.facebook.com/hoang.aanh.225907',
   },
   {
+    name: 'Linkedin',
     icon: <FaLinkedin />,
     path: 'https://www.linkedin.com/in/nguyen-anh-3974a4305/',
   },

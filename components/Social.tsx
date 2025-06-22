@@ -15,6 +15,7 @@ const Social: React.FC<SocialProps> = ({
       {socials.map((social, index) => {
         return (
           <a
+            aria-label={`View my ${social.name}`}
             key={index}
             href={social.path}
             className={iconStyles}
