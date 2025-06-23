@@ -1,42 +1,11 @@
-import dynamic from 'next/dynamic'
+import { Button } from '@/components/ui/button'
+import { FiDownload } from 'react-icons/fi'
 
-// Dynamically import components with a loading fallback
-const Button = dynamic(
-  () =>
-    import('@/components/ui/button').then(
-      (mod) => mod.Button,
-    ),
-  {
-    loading: () => <div>Loading Button...</div>,
-  },
-)
-const Social = dynamic(
-  () => import('@/components/Social'),
-  {
-    loading: () => <div>Loading Social...</div>,
-  },
-)
-const Photo = dynamic(() => import('@/components/Photo'), {
-  loading: () => <div>Loading Photo...</div>,
-})
-const Stats = dynamic(() => import('@/components/Stats'), {
-  loading: () => <div>Loading Stats...</div>,
-})
-const TypeWriter = dynamic(
-  () => import('@/components/TypeWritter'),
-  {
-    loading: () => <div>Loading TypeWriter...</div>,
-  },
-)
-
-// Dynamically import react-icons
-const FiDownload = dynamic(
-  () =>
-    import('react-icons/fi').then((mod) => mod.FiDownload),
-  {
-    loading: () => <div>Loading Icon...</div>,
-  },
-)
+// Components
+import Social from '@/components/Social'
+import Photo from '@/components/Photo'
+import Stats from '@/components/Stats'
+import TypeWriter from '@/components/TypeWriter'
 
 // Constants
 import { mySelf } from '@/constants/mySelf'
@@ -65,7 +34,7 @@ export const metadata = createMetadata({
     'seo',
   ],
   ogImage:
-    'https://github.com/nguyennanhcd/image_container/blob/main/portfolio-image/home.png?raw=true',
+    'https://gitlab.com/nguyennanhcd1/image-container/-/raw/main/portfolio-image/Screenshot%202025-06-21%20072326.png?ref_type=heads',
 })
 
 export default async function Home() {
