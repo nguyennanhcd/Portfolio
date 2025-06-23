@@ -1,10 +1,19 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+const MotionDiv = dynamic(() =>
+  import('framer-motion').then((mod) => mod.motion.div),
+)
+
+const AnimatePresence = dynamic(() =>
+  import('framer-motion').then(
+    (mod) => mod.AnimatePresence,
+  ),
+)
 import { usePathname } from 'next/navigation'
 
 //components
 import Stairs from './Stairs'
+import dynamic from 'next/dynamic'
 
 const StairTransition = () => {
   const pathname = usePathname()
@@ -16,12 +25,16 @@ const StairTransition = () => {
             <Stairs />
           </div>
 
-          <motion.div
+          <MotionDiv
             className='h-screen w-screen fixed bg-primary top-0 pointer-events-none'
             initial={{ opacity: 1 }}
             animate={{
               opacity: 0,
-              transition: { delay: 1, duration: 0.4, ease: 'easeInOut' }
+              transition: {
+                delay: 1,
+                duration: 0.4,
+                ease: 'easeInOut',
+              },
             }}
           />
         </div>

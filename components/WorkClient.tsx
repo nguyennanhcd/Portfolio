@@ -16,12 +16,28 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { BsArrowUpRight, BsGithub } from 'react-icons/bs'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
+// swiper
+const Swiper = dynamic(
+  () => import('swiper/react').then((mod) => mod.Swiper),
+  {
+    ssr: false,
+  },
+)
+
+const SwiperSlide = dynamic(
+  () =>
+    import('swiper/react').then((mod) => mod.SwiperSlide),
+  {
+    ssr: false,
+  },
+)
 import 'swiper/css'
+
 import Image from 'next/image'
 
 // components
 import WorkSliderBtns from './WorkSliderBtns'
+import dynamic from 'next/dynamic'
 
 const WorkClient = () => {
   const [project, setProject] = useState(projects[0])
