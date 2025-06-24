@@ -35,6 +35,7 @@ const Photo = () => {
             priority
             quality={75}
             fill
+            fetchPriority='high'
             alt='myself'
             className='object-contain'
             sizes='(max-width: 1280px) 298px, 498px'
