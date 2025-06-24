@@ -23,6 +23,8 @@ const jetbrainsMono = JetBrains_Mono({
     '800',
   ],
   variable: '--font-jetbrainsMono',
+  preload: true,
+  display: 'swap',
 })
 
 export const metadata: Metadata = {

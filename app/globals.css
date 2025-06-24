@@ -1,9 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-
-
-@custom-variant dark (&:is(.dark *));
-
 
 /* config area*/
 @theme {
@@ -187,6 +182,3 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
-
-
-/* HTML: <div class="loader"></div> */
