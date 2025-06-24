@@ -37,13 +37,14 @@ const Photo = () => {
             fill
             alt='myself'
             className='object-contain'
+            sizes='(max-width: 1280px) 298px, 498px'
           />
         </motion.div>
 
         {/* circle */}
         <motion.svg
           className='w-[300px] xl:w-[506px] h-[300px] xl:h-[506px]'
-          fill='transpaent'
+          fill='transparent'
           viewBox='0 0 506 506'
           xmlns='http://www.w3.org/2000/svg'
         >
