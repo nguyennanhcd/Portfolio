@@ -19,7 +19,7 @@ const Photo = () => {
       >
         {/*Image */}
         <motion.div
-          className='w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute '
+          className='w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute clip-path'
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,

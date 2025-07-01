@@ -75,7 +75,7 @@ export default async function Home() {
           </div>
 
           {/* Photo */}
-          <div className='order-1 xl:order-none mb-8 xl:mb-0 clip-path'>
+          <div className='order-1 xl:order-none mb-8 xl:mb-0'>
             <Photo />
           </div>
         </div>
