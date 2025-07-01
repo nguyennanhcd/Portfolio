@@ -31,6 +31,9 @@
   .h3 {
     @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
   }
+  .clip-path {
+    clip-path: circle(50% at 50% 50%);
+  }
   
   .text-outline-hover {
     -webkit-text-stroke: 1px oklch(0.8542 0.0517 199.29);
