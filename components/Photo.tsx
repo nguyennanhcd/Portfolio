@@ -33,7 +33,7 @@ const Photo = () => {
           <Image
             src='/assets/photo.jpeg'
             priority
-            quality={75}
+            quality={100}
             fill
             fetchPriority='high'
             alt='myself'
