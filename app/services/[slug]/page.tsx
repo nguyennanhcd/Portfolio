@@ -26,11 +26,11 @@ export default async function ServiceDetailPage({
   if (!service) return notFound()
 
   return (
-    <div className='p-6'>
+    <section className='container mx-auto'>
       <h1 className='text-3xl font-bold mb-4'>
         {service.title}
       </h1>
       <p className='text-lg'>{service.description}</p>
-    </div>
+    </section>
   )
 }
