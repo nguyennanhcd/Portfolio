@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <header
-      className={`text-white transition-all duration-300 ease-in-out ${hasScrolled ? 'sticky top-0 left-0 w-full z-50 bg-accent-default shadow-lg backdrop-blur-md py-4 xl:py-8' : 'bg-transparent py-8 xl:py-12'}`}
+      className={` transition-all duration-300 ease-in-out ${hasScrolled ? 'sticky top-0 left-0 w-full z-50 bg-accent-default shadow-lg backdrop-blur-md py-4 xl:py-8 text-primary/80' : 'bg-transparent py-8 xl:py-12 text-white'}`}
     >
       <div className='container mx-auto flex justify-between items-center'>
         {/* Logo */}
@@ -35,7 +35,7 @@ const Header = () => {
 
         {/* desktop nav & hire me button */}
         <div className='hidden xl:flex items-center gap-8'>
-          <Nav />
+          <Nav scrolled={hasScrolled} />
           <Link href='/contact'>
             <Button className=''>Hire me</Button>
           </Link>
