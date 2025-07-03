@@ -1,42 +1,12 @@
-// app/services/[slug]/page.tsx
-// Dynamic service detail page – consumes the enriched `services`
-// array (with tagline, packages, steps, testimonials) and renders
-// a complete landing page for each service.
-// --------------------------------------------------------------
-
 import { services } from '@/constants/services'
 import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
 
-//---------------------------------------------------------------
-// 1.  Generate static params so that Next can pre‑render at build
-//---------------------------------------------------------------
 export async function generateStaticParams() {
   return services.map(({ href }) => ({
     slug: href.split('/').pop(),
   }))
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
-  const { slug } = await params
-
-  const service = services.find((s) =>
-    s.href.endsWith(slug),
-  )
-  if (!service) return {}
-  return {
-    title: `${service.title} | Services`,
-    description: service.description,
-  }
-}
-
-//---------------------------------------------------------------
-// 3.  Page Component
-//---------------------------------------------------------------
 export default async function ServiceDetailPage({
   params,
 }: {
