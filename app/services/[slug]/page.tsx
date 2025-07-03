@@ -10,9 +10,10 @@ export async function generateStaticParams() {
 export default async function ServiceDetailPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
+  console.log(slug)
   const service = services.find((s) =>
     s.href.endsWith(slug),
   )
