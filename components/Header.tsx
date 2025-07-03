@@ -9,11 +9,11 @@ import MobileNav from './MobileNav'
 import { useEffect, useState } from 'react'
 
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false)
+  const [hasScrolled, setHasScrolled] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 50)
+      setHasScrolled(window.scrollY > 50)
     }
     window.addEventListener('scroll', onScroll)
     return () =>
@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <header
-      className={`py-8 xl:py-12 text-white ${scrolled ? 'bg-black' : 'bg-transparent'}`}
+      className={`text-white transition-all duration-300 ease-in-out ${hasScrolled ? 'sticky top-0 left-0 w-full z-50 bg-accent-default shadow-lg backdrop-blur-md py-4 xl:py-8' : 'bg-transparent py-8 xl:py-12'}`}
     >
       <div className='container mx-auto flex justify-between items-center'>
         {/* Logo */}
