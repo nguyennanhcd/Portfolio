@@ -13,6 +13,7 @@ import { stats } from '@/constants/stats'
 
 //utils
 import { createMetadata } from '@/lib/metadata'
+import BriefInfo from '@/components/BriefInfo'
 
 // Export revalidate to enable ISR for 10 days
 export const revalidate = 864000 // 10*24*60*60
@@ -46,7 +47,6 @@ export default async function Home() {
         <div className='flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-4'>
           {/* Text */}
           <div className='text-center xl:text-left order-2 xl:order-none'>
-            <span>Software Developer</span>
             <h1 className='h1 mb-6'>
               Hi, I’m <br /> <TypeWriter mySelf={mySelf} />
             </h1>
@@ -82,6 +82,7 @@ export default async function Home() {
       </div>
       {/* Pass statsData to Stats component */}
       <Stats statsData={statsData} />
+      <BriefInfo />
     </section>
   )
 }
