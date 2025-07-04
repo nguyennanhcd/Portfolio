@@ -52,15 +52,15 @@ const BriefInfo = () => {
       initial='hidden'
       animate={inView ? 'visible' : 'hidden'}
       variants={sectionVariants}
-      className='xl:pt-20 pt-10'
+      className='xl:pt-50 pt-10 xl:pb-50 pb-10'
     >
       <div className='container mx-auto bg-[#232329] rounded-xl p-10 xl:p-20'>
         <motion.h2
-          className='text-5xl font-bold mb-3 text-center'
+          className='text-5xl font-bold mb-3 text-center text-accent-default'
           initial='hidden'
           animate={inView ? 'visible' : 'hidden'}
           variants={textVariants}
-          custom={0} // No delay for h2
+          custom={0}
         >
           What I Do ?
         </motion.h2>
@@ -86,7 +86,7 @@ const BriefInfo = () => {
                 <span
                   aria-hidden
                   className='-translate-y-12 text-[160px] leading-none 
-                   font-extrabold text-gray-300 pointer-events-none select-none'
+                   font-extrabold text-accent-default pointer-events-none select-none'
                 >
                   {skill.key}
                 </span>
