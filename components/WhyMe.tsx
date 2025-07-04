@@ -1,66 +1,34 @@
 'use client'
 
+import { whyMe } from '@/constants/whyme'
 import React from 'react'
-import { PiLightbulbLight } from 'react-icons/pi'
 
 const WhyMe = () => {
   return (
-    <section className=''>
-      <div className='container mx-auto bg-accent-hover/82 rounded-xl p-10 xl:p-20'>
-        <div className='container mx-auto max-w-3xl'>
-          <h2 className='h2 mb-6 text-center'>
+    <section className='xl:mb-30 mb-10'>
+      <div className='bg-accent-hover/82 rounded-xl pt-10 xl:p-20'>
+        <div className='container mx-auto'>
+          <h2 className='h2 mb-6 text-center text-primary/80'>
             Why Choose Me?
           </h2>
-          <div className='flex items-center justify-between mb-8'>
-            <div>
-              <PiLightbulbLight className='inline-block text-3xl text-primary' />
-              <p className='text-center mb-8 text-white/80'>
-                I am a dedicated professional with a passion
-                for delivering high-quality results. My
-                expertise in web development, combined with
-                my commitment to continuous learning,
-                ensures that I stay at the forefront of
-                industry trends and technologies.
-              </p>
-            </div>
-            <div>
-              <PiLightbulbLight className='inline-block text-3xl text-primary' />
-              <p className='text-center mb-8 text-white/80'>
-                I am a dedicated professional with a passion
-                for delivering high-quality results. My
-                expertise in web development, combined with
-                my commitment to continuous learning,
-                ensures that I stay at the forefront of
-                industry trends and technologies.
-              </p>
-            </div>
-            <div>
-              <PiLightbulbLight className='inline-block text-3xl text-primary' />
-              <p className='text-center mb-8 text-white/80'>
-                I am a dedicated professional with a passion
-                for delivering high-quality results. My
-                expertise in web development, combined with
-                my commitment to continuous learning,
-                ensures that I stay at the forefront of
-                industry trends and technologies.
-              </p>
-            </div>
-            <div>
-              <PiLightbulbLight className='inline-block text-3xl text-primary' />
-              <p className='text-center mb-8 text-white/80'>
-                I am a dedicated professional with a passion
-                for delivering high-quality results. My
-                expertise in web development, combined with
-                my commitment to continuous learning,
-                ensures that I stay at the forefront of
-                industry trends and technologies.
-              </p>
-            </div>
+          <div className='flex justify-center flex-col lg:flex-row xl:gap-20 gap-12 xl:mt-20 mt-17'>
+            {whyMe.map((item, index) => (
+              <div key={index}>
+                <span className='block text-5xl text-primary text-center'>
+                  {item.icon}
+                </span>
+                <span className='block text-center text-lg font-semibold text-primary'>
+                  {item.whyMe}
+                </span>
+                <p className='text-left mb-8 xl:mt-5 text-primary/80'>
+                  {item.briefDesc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
   )
 }
-
 export default WhyMe
