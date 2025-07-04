@@ -8,7 +8,7 @@ import { useInView } from 'react-intersection-observer'
 const BriefInfo = () => {
   const { ref, inView } = useInView({
     triggerOnce: true, // Animation triggers only once
-    threshold: 0.5, // Trigger when 20% of the component is visible
+    threshold: 0.3, // Trigger when 30% of the component is visible
   })
 
   const sectionVariants = {
@@ -33,13 +33,26 @@ const BriefInfo = () => {
     }),
   }
 
+  const skillVariants = {
+    hidden: { opacity: 0, y: 30 }, // Start slightly below and invisible
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0, // Slide to original position
+      transition: {
+        duration: 0.6,
+        ease: 'easeInOut',
+        delay: 0.4 + i * 0.1,
+      }, // Start after text animations
+    }),
+  }
+
   return (
     <motion.section
       ref={ref}
       initial='hidden'
       animate={inView ? 'visible' : 'hidden'}
       variants={sectionVariants}
-      className='xl:pt-20 pt-10 mb-10'
+      className='xl:pt-20 pt-10'
     >
       <div className='container mx-auto bg-[#232329] rounded-xl p-10 xl:p-20'>
         <motion.h2
@@ -61,8 +74,14 @@ const BriefInfo = () => {
           Find out who am I and what actually I good at
         </motion.p>
         <div className='grid grid-cols-1 xl:grid-cols-4 xl:gap-8 xl:mt-40 mt-33 gap-30'>
-          {skills.map((skill) => (
-            <div key={skill.key}>
+          {skills.map((skill, index) => (
+            <motion.div
+              key={skill.key}
+              initial='hidden'
+              animate={inView ? 'visible' : 'hidden'}
+              variants={skillVariants}
+              custom={index} // Stagger each skill item
+            >
               <div className='flex items-center text-center flex-row'>
                 <span
                   aria-hidden
@@ -78,7 +97,7 @@ const BriefInfo = () => {
               <p className='-mt-6 pl-2 text-gray-500 text-left'>
                 {skill.body}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
