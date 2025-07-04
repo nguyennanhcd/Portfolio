@@ -11,7 +11,9 @@ import Link from 'next/link'
 import { CiMenuFries } from 'react-icons/ci'
 import { links } from '@/constants/navLinks'
 
-const MobileNav = () => {
+type NavProps = { scrolled: boolean }
+
+const MobileNav = ({ scrolled }: NavProps) => {
   const pathname: string = usePathname()
   return (
     <Sheet>
@@ -19,13 +21,17 @@ const MobileNav = () => {
       <SheetTrigger className='flex justify-center items-center'>
         <CiMenuFries
           aria-label='Open navigation menu'
-          className='text-[32px] text-accent-default'
+          className={`text-[32px] hover:cursor-pointer transition-all${
+            scrolled
+              ? 'text-primary/80 hover:text-accent-default '
+              : 'text-accent-default hover:text-accent-hover'
+          }`}
         />
       </SheetTrigger>
 
       <SheetContent className='flex flex-col'>
         {/*Logo*/}
-        <div className='mt-42 mb-40 text-center text-2xl'>
+        <div className='mt-30 mb-40 text-center text-2xl'>
           <Link href='/'>
             <h1 className='font-semibold text-4xl'>
               Hoàng Anh
