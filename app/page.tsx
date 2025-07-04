@@ -14,6 +14,7 @@ import { stats } from '@/constants/stats'
 //utils
 import { createMetadata } from '@/lib/metadata'
 import BriefInfo from '@/components/BriefInfo'
+import WhyMe from '@/components/WhyMe'
 
 // Export revalidate to enable ISR for 10 days
 export const revalidate = 864000 // 10*24*60*60
@@ -83,6 +84,7 @@ export default async function Home() {
       {/* Pass statsData to Stats component */}
       <Stats statsData={statsData} />
       <BriefInfo />
+      <WhyMe />
     </section>
   )
 }
