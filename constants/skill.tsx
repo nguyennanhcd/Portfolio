@@ -13,7 +13,7 @@ export const skills: Skill[] = [
   {
     key: 'F',
     title: 'rontend coding',
-    body: 'Building responsive and interactive user interfaces with modern web technologies like HTML, CSS, and JavaScript frameworks to deliver engaging user experiences.',
+    body: 'Building responsive and interactive user interfaces with modern web technologies like HTML, CSS, and React or Nextjs to deliver engaging user experiences.',
   },
   {
     key: 'B',
