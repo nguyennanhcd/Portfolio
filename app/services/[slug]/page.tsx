@@ -1,10 +1,27 @@
 import { services } from '@/constants/services'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
   return services.map(({ href }) => ({
     slug: href.split('/').pop(),
   }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const service = services.find((s) =>
+    s.href.endsWith(slug),
+  )
+  if (!service) return {}
+  return {
+    title: `${service.title} | Services`,
+    description: service.description,
+  }
 }
 
 export default async function ServiceDetailPage({
@@ -22,7 +39,6 @@ export default async function ServiceDetailPage({
 
   return (
     <section className='container mx-auto py-12'>
-      {/* Hero */}
       <header className='mb-10 text-center max-w-3xl mx-auto'>
         <h1 className='text-4xl font-bold sm:text-5xl'>
           {service.title}
