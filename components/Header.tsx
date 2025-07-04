@@ -22,12 +22,14 @@ const Header = () => {
 
   return (
     <header
-      className={` transition-all duration-300 ease-in-out ${hasScrolled ? 'sticky top-0 left-0 w-full z-50 bg-accent-default shadow-lg backdrop-blur-md py-4 xl:py-8 text-primary/80' : 'bg-transparent py-8 xl:py-12 text-white'}`}
+      className={` transition-all duration-300 ease-in-out ${hasScrolled ? 'sticky top-0 left-0 w-full z-50 bg-[oklch(0.8542_0.0517_199.29/_0.8)] shadow-lg backdrop-blur-md py-4 xl:py-6 text-primary/80 ' : 'bg-transparent py-8 xl:py-12 text-white'}`}
     >
       <div className='container mx-auto flex justify-between items-center'>
         {/* Logo */}
         <Link href='/'>
-          <h1 className='font-semibold text-4xl'>
+          <h1
+            className={`font-semibold  ${hasScrolled ? 'text-3xl' : 'text-4xl'}`}
+          >
             Hoàng Anh
             <span className='text-accent-default'>.</span>
           </h1>
@@ -43,7 +45,7 @@ const Header = () => {
 
         {/* mobile nav */}
         <div className='xl:hidden'>
-          <MobileNav />
+          <MobileNav scrolled={hasScrolled} />
         </div>
       </div>
     </header>
