@@ -52,9 +52,9 @@ const BriefInfo = () => {
       initial='hidden'
       animate={inView ? 'visible' : 'hidden'}
       variants={sectionVariants}
-      className='xl:pt-50 pt-10 xl:pb-50 pb-10'
+      className='xl:pt-50 pt-10 xl:pb-50 pb-10 '
     >
-      <div className='container mx-auto bg-[#232329] rounded-xl p-10 xl:p-20'>
+      <div className='p-10 xl:p-20 bg-[#202020]'>
         <motion.h2
           className='text-5xl font-bold mb-3 text-center text-accent-default'
           initial='hidden'
