@@ -27,7 +27,7 @@ export const services = [
     packages: [
       {
         name: 'Starter',
-        price: '$499',
+        price: '$50',
         features: [
           'Single-page site (up to 4 sections)',
           'Responsive design & basic SEO',
@@ -37,7 +37,7 @@ export const services = [
       },
       {
         name: 'Growth',
-        price: '$1,499',
+        price: '$200',
         features: [
           'Multi-page website + Blog/CMS',
           'Performance optimization (90+ Lighthouse)',
@@ -47,7 +47,7 @@ export const services = [
       },
       {
         name: 'Scale',
-        price: '$2,999',
+        price: '$800',
         features: [
           'Full-stack web app (Next.js + NestJS)',
           'Auth & role-based access',
@@ -87,7 +87,7 @@ export const services = [
     packages: [
       {
         name: 'Homework Help',
-        price: '$20/hr',
+        price: '$5/hr',
         features: [
           'On-demand problem solving',
           'Clarify class concepts',
@@ -96,7 +96,7 @@ export const services = [
       },
       {
         name: 'Exam Prep',
-        price: '$25/hr',
+        price: '$10/hr',
         features: [
           'Past-paper drilling',
           'Timed mock exams',
@@ -145,7 +145,7 @@ export const services = [
         name: 'Conversation Booster',
         price: '$15/session',
         features: [
-          '30-minute 1-on-1 calls',
+          '2-hour 1-on-1 calls',
           'Real-life speaking topics',
           'Instant pronunciation feedback',
         ],
@@ -199,7 +199,7 @@ export const services = [
     packages: [
       {
         name: 'Audit & Quick Wins',
-        price: '$299 (one-off)',
+        price: '$20 (one-off)',
         features: [
           'Comprehensive site audit',
           'Technical fixes & on-page tweaks',
@@ -208,7 +208,7 @@ export const services = [
       },
       {
         name: 'Growth SEO',
-        price: '$799/mo',
+        price: '$80/mo',
         features: [
           'Keyword research & clustering',
           'Content Optimization & internal linking',
@@ -217,7 +217,7 @@ export const services = [
       },
       {
         name: 'Authority SEO',
-        price: '$1,499/mo',
+        price: '$150/mo',
         features: [
           'All Growth SEO features',
           'White-hat link building',
