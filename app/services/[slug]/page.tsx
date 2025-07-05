@@ -39,10 +39,6 @@ export default async function ServiceDetailPage({
     s.href.endsWith(slug),
   )
 
-  console.log('Slug:', slug)
-  console.log('Service:', service)
-  console.log('Services:', services)
-
   if (!service) return notFound()
 
   return <ServicePages service={service} />
