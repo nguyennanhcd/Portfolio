@@ -5,22 +5,25 @@ import React from 'react'
 
 const WhyMe = () => {
   return (
-    <section className='xl:mb-30 mb-10'>
-      <div className='bg-accent-hover/82 rounded-xl pt-10 xl:p-20'>
-        <div className='container mx-auto'>
-          <h2 className='h2 mb-6 text-center text-primary/80'>
+    <section className='mb-10 xl:mb-24'>
+      <div className='bg-accent-default/90 pt-8 pb-12 xl:pt-16 xl:pb-20 xl:px-10'>
+        <div className='container mx-auto px-4'>
+          <h2 className='text-3xl font-bold text-center text-primary/90 mb-8 xl:mb-12'>
             Why Choose Me?
           </h2>
-          <div className='flex justify-center flex-col lg:flex-row xl:gap-20 gap-12 xl:mt-20 mt-17'>
+          <div className='flex flex-col lg:flex-row gap-8 xl:gap-12 justify-center items-center xl:mt-12 mt-8'>
             {whyMe.map((item, index) => (
-              <div key={index}>
-                <span className='block text-5xl text-primary text-center'>
+              <div
+                key={index}
+                className='flex-1 flex flex-col items-center text-center p-6 rounded-lg hover:bg-accent-hover/50 hover:cursor-pointer transition-colors duration-300'
+              >
+                <span className='text-5xl text-primary font-extralight mb-6'>
                   {item.icon}
                 </span>
-                <span className='block text-center text-lg font-semibold text-primary'>
+                <h3 className='text-lg font-semibold text-primary mb-3'>
                   {item.whyMe}
-                </span>
-                <p className='text-left mb-8 xl:mt-5 text-primary/80'>
+                </h3>
+                <p className='text-primary/80 text-base leading-relaxed'>
                   {item.briefDesc}
                 </p>
               </div>
@@ -31,4 +34,5 @@ const WhyMe = () => {
     </section>
   )
 }
+
 export default WhyMe
