@@ -1,3 +1,21 @@
+// constants/services.ts (Mutable version)
+export interface Service {
+  num: string
+  title: string
+  description: string
+  href: string
+  packages?: {
+    name: string
+    price: string
+    features: string[]
+  }[]
+  steps?: string[]
+  testimonials?: {
+    name: string
+    comment: string
+  }[]
+}
+
 export const services = [
   {
     num: '01',
@@ -228,6 +246,6 @@ export const services = [
       },
     ],
   },
-] as const
+]
 
 export type ServiceSlug = (typeof services)[number]['href']
