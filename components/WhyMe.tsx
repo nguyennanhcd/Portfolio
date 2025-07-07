@@ -114,13 +114,13 @@ export default function WhyMe() {
       variants={sectionVariants}
       initial='hidden'
       whileInView='visible'
-      viewport={{ once: false, amount: viewportAmount }}
+      viewport={{ once: true, amount: viewportAmount }}
       style={
         !prefersReducedMotion
           ? { y: parallaxY, willChange: 'transform' }
           : {}
       }
-      className='mb-10 xl:mb-24'
+      className='mt-5 xl:mb-20'
     >
       <div className='bg-accent-default/90 pt-8 pb-12 xl:pt-16 xl:pb-20 xl:px-10 xl:h-[600px]'>
         <div className='container mx-auto px-4'>

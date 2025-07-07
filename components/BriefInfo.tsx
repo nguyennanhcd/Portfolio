@@ -44,7 +44,7 @@ export default function BriefInfo() {
     <motion.section
       initial='hidden'
       whileInView='visible'
-      viewport={{ amount: 0.3, once: false }}
+      viewport={{ amount: 0.3, once: true }}
       variants={sectionVariants}
       className='xl:pt-50 pt-10 xl:pb-50 pb-10'
     >

@@ -40,7 +40,7 @@ const ResumeClient = () => {
         }}
         className='min-h-[80vh] flex items-center justify-center py-12 xl:py-0'
       >
-        <div className='container mx-auto'>
+        <div className='container mx-auto  px-2 xl:px-0'>
           <Tabs
             defaultValue='experience'
             className='flex flex-col xl:flex-row gap-[60px]'

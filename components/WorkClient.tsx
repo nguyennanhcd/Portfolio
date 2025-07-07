@@ -50,7 +50,7 @@ const WorkClient = () => {
         }}
         className='min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 '
       >
-        <div className='container mx-auto'>
+        <div className='container mx-auto  px-2 xl:px-0'>
           <div className='flex flex-col xl:flex-row xl:gap-[30px]'>
             <div className='w-[95%] container mx-auto xl:w-[50%] xl:h-[460px] flex flex-col xl: justify-between order-2 xl:order-none '>
               <div className='flex flex-col gap-[30px] h-[50%'>
