@@ -44,7 +44,7 @@ export default async function Home() {
 
   return (
     <section className='h-full xl:-mt-10'>
-      <div className='container mx-auto'>
+      <div className='container mx-auto px-2 xl:px-0'>
         <div className='flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-4'>
           {/* Text */}
           <div className='text-center xl:text-left order-2 xl:order-none'>

@@ -35,6 +35,8 @@
     clip-path: circle(50% at 50% 50%);
   }
   
+
+  
   .text-outline-hover {
     -webkit-text-stroke: 1px oklch(0.8542 0.0517 199.29);
   }

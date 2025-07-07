@@ -23,7 +23,7 @@ const ContactClient = () => {
         }}
         className='py-6 '
       >
-        <div className='container mx-auto'>
+        <div className='container mx-auto  px-2 xl:px-0'>
           <div className='flex flex-col xl:flex-row gap-[30px]'>
             {/* form */}
             <Form />

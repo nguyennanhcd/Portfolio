@@ -19,8 +19,8 @@ interface Service {
 
 export default function ServicesClient() {
   return (
-    <section className='min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 ml-2'>
-      <div className='container mx-auto'>
+    <section className='min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 '>
+      <div className='container mx-auto px-2 xl:px-0'>
         <LazyMotion features={domAnimation}>
           <motion.div
             initial={{ opacity: 0 }}
@@ -48,13 +48,13 @@ export default function ServicesClient() {
                     <Link
                       aria-label={`View my ${service.title} works`}
                       href={service.href}
-                      className='w-[60px] h-[60px] rounded-full bg-white group-hover:bg-accent-default transition-all duration-500 flex justify-center items-center hover:-rotate-45'
+                      className='lg:w-[60px] lg:h-[60px] w-[50px] h-[50px] rounded-full bg-white group-hover:bg-accent-default transition-all duration-500 flex justify-center items-center hover:-rotate-45 xl:-translate-x-0 -translate-x-3'
                     >
                       <BsArrowDownRight className='text-primary text-2xl' />
                     </Link>
                   </div>
                   {/* Title */}
-                  <h2 className='text-[42px] font-bold leading-none text-white group-hover:text-accent-default transition-all duration-500'>
+                  <h2 className='text-[42px] font-bold leading-none text-white group-hover:text-accent-default transition-all duration-500 '>
                     {service.title}
                   </h2>
                   {/* Description */}
