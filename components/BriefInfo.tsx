@@ -104,7 +104,7 @@ export default function BriefInfo() {
           className='mt-10 text-base text-muted-foreground text-center'
           variants={textVariants}
         >
-          Find out who I am and what I'm good at
+          Find out who I am and what I&apos;m good at
         </motion.p>
         <motion.div
           className='grid grid-cols-1 xl:grid-cols-4 xl:gap-8 xl:mt-40 mt-33 gap-30'

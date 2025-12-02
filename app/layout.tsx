@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { JetBrains_Mono } from 'next/font/google'
-// @ts-ignore: side-effect CSS import has no type declarations
+// @ts-expect-error
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
 import Script from 'next/script'

@@ -47,7 +47,8 @@ export default async function Home() {
           {/* Text */}
           <div className='w-full max-w-3xl'>
             <h1 className='h1 mb-6'>
-              Hi, I'm <br /> <TypeWriter mySelf={mySelf} />
+              Hi, I&apos;m <br />{' '}
+              <TypeWriter mySelf={mySelf} />
             </h1>
             <p className='mx-auto max-w-2xl mb-9 text-white/80'>
               I excel at crafting elegant digital
