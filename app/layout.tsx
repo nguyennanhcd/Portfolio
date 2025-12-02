@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { JetBrains_Mono } from 'next/font/google'
-// @ts-expect-error
+// @ts-expect-error: Missing types
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
 import Script from 'next/script'
