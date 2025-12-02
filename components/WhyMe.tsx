@@ -7,9 +7,10 @@ import {
   useScroll,
   useTransform,
   useReducedMotion,
+  type Variants,
 } from 'framer-motion'
 
-const sectionVariants = {
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 80 },
   visible: {
     opacity: 1,
@@ -18,7 +19,7 @@ const sectionVariants = {
   },
 }
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -28,7 +29,7 @@ const containerVariants = {
   },
 }
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 60,
@@ -51,7 +52,7 @@ const cardVariants = {
   }),
 }
 
-const iconVariants = {
+const iconVariants: Variants = {
   hidden: { scale: 0, rotate: -90 },
   visible: {
     scale: 1,

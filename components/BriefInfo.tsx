@@ -1,50 +1,95 @@
 'use client'
-
-import React from 'react'
+import { useEffect, useRef } from 'react'
 import { skills } from '@/constants/skill'
-import { motion } from 'framer-motion'
+import {
+  motion,
+  useAnimation,
+  useInView,
+  type Transition,
+  type Variants,
+} from 'framer-motion'
 
-const sectionVariants = {
+const smoothEase: [number, number, number, number] = [
+  0.22, 1, 0.36, 1,
+]
+
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: 'easeInOut' },
+    transition: {
+      duration: 0.2,
+      ease: smoothEase,
+      staggerChildren: 0.1,
+    },
   },
 }
 
-const textVariants = {
-  hidden: { opacity: 0, scale: 0.4 },
-  visible: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.8,
-      ease: 'easeInOut',
-      delay: i * 0.2,
-    },
-  }),
-}
-
-const skillVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
+const textVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: 'easeInOut',
-      delay: 0.4 + i * 0.1,
+      duration: 0.2,
+      ease: smoothEase,
     },
-  }),
+  },
+}
+
+const skillContainerVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.2,
+      ease: smoothEase,
+      delayChildren: 0.05,
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+const skillSpring: Transition = {
+  type: 'spring',
+  stiffness: 140,
+  damping: 18,
+}
+
+const skillVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: skillSpring,
+  },
 }
 
 export default function BriefInfo() {
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const controls = useAnimation()
+  const inView = useInView(sectionRef, {
+    once: true,
+    // Start animating just before the section fully enters the viewport to avoid a late trigger.
+    margin: '0px 0px -20% 0px',
+  })
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+  }, [controls, inView])
+
   return (
     <motion.section
+      ref={sectionRef}
       initial='hidden'
-      whileInView='visible'
-      viewport={{ amount: 0.3, once: true }}
+      animate={controls}
       variants={sectionVariants}
       className='xl:pt-50 pt-10 xl:pb-50 pb-10'
     >
@@ -52,30 +97,28 @@ export default function BriefInfo() {
         <motion.h2
           className='text-5xl font-bold mb-3 text-center text-accent-default'
           variants={textVariants}
-          custom={0}
         >
-          What I Do ?
+          What I Do ?
         </motion.h2>
-
         <motion.p
           className='mt-10 text-base text-muted-foreground text-center'
           variants={textVariants}
-          custom={1}
         >
-          Find out who I am and what I’m good at
+          Find out who I am and what I'm good at
         </motion.p>
-
-        <div className='grid grid-cols-1 xl:grid-cols-4 xl:gap-8 xl:mt-40 mt-33 gap-30'>
-          {skills.map((skill, i) => (
+        <motion.div
+          className='grid grid-cols-1 xl:grid-cols-4 xl:gap-8 xl:mt-40 mt-33 gap-30'
+          variants={skillContainerVariants}
+        >
+          {skills.map((skill) => (
             <motion.div
               key={skill.key}
               variants={skillVariants}
-              custom={i}
             >
               <div className='flex items-center text-center flex-row'>
                 <span
                   aria-hidden
-                  className='-translate-y-12 text-[160px] leading-none font-extrabold text-accent-default pointer-events-none select-none'
+                  className='-translate-y-12 text-[160px] leading-none font-extrabold text-accent-default pointer-events-none select-none will-change-transform'
                 >
                   {skill.key}
                 </span>
@@ -88,7 +131,7 @@ export default function BriefInfo() {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </motion.section>
   )
