@@ -1,9 +1,22 @@
 import { fetchGitHubCommits } from '@/lib/fetchGithubCommits'
 
-const numOfCommits: number = await fetchGitHubCommits(
-  'nguyennanhcd',
-  process.env.githubToken!,
-)
+// Safely fetch commits with fallback
+let numOfCommits: number = 100 // Default fallback value
+
+try {
+  if (process.env.githubToken) {
+    numOfCommits = await fetchGitHubCommits(
+      'nguyennanhcd',
+      process.env.githubToken,
+    )
+  }
+} catch (error) {
+  console.warn(
+    'Failed to fetch GitHub commits, using fallback value:',
+    error,
+  )
+  numOfCommits = 100 // Use fallback value
+}
 
 const calculateYearsOfExperience = (
   startDate: string | number | Date,
