@@ -11,7 +11,6 @@ export const fetchGitHubCommits = async (
   username: string,
   token: string,
 ): Promise<number> => {
-  // Check if token is provided
   if (!token) {
     console.warn(
       'GitHub token not provided, returning default value',
