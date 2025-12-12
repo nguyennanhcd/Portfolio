@@ -2,9 +2,10 @@ import type { NextConfig } from 'next';
 import BundleAnalyzer from '@next/bundle-analyzer';
 
 const nextConfig: NextConfig = {
- experimental: {
+  output: 'standalone',
+  experimental: {
    
- }
+  }
 };
 
 const withBundleAnalyzer = BundleAnalyzer({
